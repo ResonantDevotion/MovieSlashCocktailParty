@@ -1,0 +1,57 @@
+/* GLOBAL */
+:root {
+    --pink: magenta;
+    --blue: blue;
+    --green: lime;
+}
+
+button {
+    font-size: 14px;
+    color: white;
+    background-color: var(--blue);
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 10px 15px;
+    border: 0;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 25px;
+}
+
+button:hover {
+    background-color: var(--pink);
+}
+
+section {
+    padding: 64px;
+    text-align: center;
+}
+
+/* HEADER */
+
+h1 {
+    font-size: 34px;
+}
+
+header {
+    padding: 32px 0px;
+}
+
+header .row {
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+nav ul li {
+    list-style-type: none;
+}
+
+/* CTA */
+
+/* CONTENT */
