@@ -13,58 +13,58 @@
 
 <body>
     <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-3">
-                    <nav>
-                        <ul>
-                            <li>Home</li>
-                            <li><a href="./assets/recipes/recipe.html"> Recipes </a></li>
-                            <li><a href="./"</li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-6">
-                    <h1>Movie and Cocktail Evening!</h1>
-                </div>
-                <div class="col-3">
-                    <div class="cocktail">
-                        <!-- Dynamically created img with cocktail image -->
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Todays Search </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> History </a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#"> Recipes </a>
+            </li>
+
+        </ul>
     </header>
+    <div class="jumbotron">
+        <h1 class="display-4">Movie and Cocktail Evening!</h1>
+        <p class="lead">Everyone wants a treat with a movie, why not try our randomised movie and cocktail pairing
+            app!</p>
+        <hr class="my-4">
+        <p> Click the button below to make the evening spectacular!</p>
+        <a id="matchBtn" class="btn btn-primary btn-lg" role="button">Create the Perfect Match</a>
+    </div>
 
     <main>
-        <section class="cta">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <p>
-                            Everyone wants a treat with a movie, why not try our randomised movie and cocktail pairing
-                            app!
-                        </p>
-                        <h2>Click the button below to make the evening spectacular!</h2>
-                        <button id="matchBtn">Create the perfect match</button>
+        <section id="The-Evenning " class="container">
+            <div class="row">
+
+                <div id="movie" class="col">
+                    <H2> Movie</H2>
+                    <h3> Title </h3>
+                    <div id="movie-poster"></div>
+                    <p> Plot</p>
+                </div>
+
+                <div id="cocktail" class="col">
+                    <H2> Cocktail </H2>
+                    <h4> Name </h4>
+                    <p> Description</p>
+                </div>
+
+                <div id="Recipes" class="col">
+                    <div class="row">
+                        <H2> Ingredients </H2>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <h2>Instructions </h2>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="content">
-            <div class="container">
-                <div class="row" id="movieCocktailPair">
-                    <div class="col">
-                        <div id="movie">
-                            <!-- Your dynamically created movie title & image here  -->
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div id="cocktail">
-                            <!-- Your dynamically created cocktail title & recipe here  -->
-                        </div>
-                    </div>
-                </div>
+
+                <br>
                 <div class="row">
                     <div class="col">
                         <button id="save">I LOVE THIS! Save this recipe!</button>
