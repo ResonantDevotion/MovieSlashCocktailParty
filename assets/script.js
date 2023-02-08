@@ -5,6 +5,8 @@ const cocktailInfo = $('#cocktail');
 const matchBtn = $('#matchBtn');
 const saveBtn = $('#save');
 const movieHeader = $('<h3>')
+const ingredientInfo = $('#ingredients')
+const instructionInfo = $('#instructions')
 
 const movieCocktailPair = $('#movieCocktailPair');
 const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
@@ -61,7 +63,7 @@ matchBtn.on('click', function (event) {
 
     }).then(function (response){
         // Creates a Div tag, pulls the name from the API and adds it to the HTML
-        const cocktailName = $('<div>')
+        const cocktailName = $('<h3>')
         cocktailName.text(response.drinks[0].strDrink)
         cocktailInfo.append(cocktailName)
         // Creates an image tag, pulls the image from the API and adds the image to the HTML
@@ -86,14 +88,14 @@ matchBtn.on('click', function (event) {
             var measurex = ingredients[i].measure
             const cocktailRecipe = $('<div>')
             cocktailRecipe.text(measurex + " of " + ingredientx)
-            cocktailInfo.append(cocktailRecipe)
+            ingredientInfo.append(cocktailRecipe)
         }
        }
      }
     // Creates a Div, adds text to the element and adds to the HTML
     const cocktailInstructions = $('<div>')
     cocktailInstructions.text(response.drinks[0].strInstructions)
-    cocktailInfo.append(cocktailInstructions)    
+    instructionInfo.append(cocktailInstructions)    
  })
         
 })      
