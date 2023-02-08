@@ -16,7 +16,7 @@ const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + mo
 
 
 // when match button is clicked, event listen and complete following functions
-matchBtn.on('click', function(event){
+matchBtn.on('click', function (event) {
     event.preventDefault();
     $('#movie').empty()
     $('#cocktail').empty()
@@ -28,6 +28,7 @@ matchBtn.on('click', function(event){
     const filmAjax = $.ajax({
         url: movieQueryURL,
         method: 'GET'
+
     // Once the above function has run, continue
     }).then(function (response){
         // Loops the results array within the API response
@@ -52,10 +53,12 @@ matchBtn.on('click', function(event){
               
     
 
+
     //cocktail image is pulled by the API and dynamically appended to the #cocktail
     const cocktailAPi = $.ajax({
         url: randomCocktail,
         method: "GET"
+
     }).then(function (response){
         // Creates a Div tag, pulls the name from the API and adds it to the HTML
         const cocktailName = $('<div>')
@@ -95,6 +98,7 @@ matchBtn.on('click', function(event){
         
 })      
  
+
     //cocktail recipe is pulled by the API and dynamically appended to the recipe html
     //NOT WORKING
     // .then(function (response){
@@ -107,7 +111,7 @@ matchBtn.on('click', function(event){
 
 
 // when save button is clicked, event listen and complete following functions
-saveBtn.on('click', function(event){
+saveBtn.on('click', function (event) {
     event.preventDefault();
 
     //NOT WORKING NOT SURE WHAT TO SAVE INTO LS YET
@@ -115,3 +119,4 @@ saveBtn.on('click', function(event){
 
 });
 // the chosen movie/cocktail is saved to local storage
+
