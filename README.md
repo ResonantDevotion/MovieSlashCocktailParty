@@ -24,6 +24,9 @@ N/A
 ## Usage 
 Deployed application should look like the following images:
 
+![Sample-code](assets/images/sample-code.jpg)
+
+
 
 ## Credits
 Benjamin Cottrell, Amelia Bramwell, Haris Haider, and Rebecca Wood.
