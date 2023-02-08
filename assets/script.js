@@ -59,11 +59,83 @@ matchBtn.on('click', function(event){
         url: randomCocktail,
         method: "GET"
     }).then(function (response){
-        const cocktailImg = $('<img>');
-        cocktailImg.attr('src', response.drinks[0].strDrinkThumb);
-        cocktailInfo.append(cocktailImg);
+        //
+        const cocktailName = $('<div>')
+        cocktailName.text(response.drinks[0].strDrink)
+        cocktailInfo.append(cocktailName)
+        //
+        const cocktailImg = $('<img>')
+        cocktailImg.attr('src', response.drinks[0].strDrinkThumb)
+        cocktailInfo.append(cocktailImg)
+        //
+        const cocktailRecipe = $('<div>')
+        console.log(response.drinks[0].strIngredient1)
+        //
+        const cocktailInstructions = $('<div>')
+        cocktailInstructions.text(response.drinks[0].strInstructions)
+        cocktailInfo.append(cocktailInstructions)
+        console.log("strIngredient1, " + response.drinks[0][strIngredient1])
         console.log(response);
+        // let ingredients = [ 
+        //     {ingredient: response.drinks[0].strIngredient1,
+        //      measure: response.drinks[0].strMeasure1}
+        //     {ingredient: response.drinks[0].strIngredient2,
+        //      measure: response.drinks[0].strMeasure2}
+        //     {ingredient: response.drinks[0].strIngredient3,
+        //      measure: response.drinks[0].strMeasure3}
+        //     {ingredient: response.drinks[0].strIngredient4,
+        //      measure: response.drinks[0].strMeasure4}
+        //     {ingredient: response.drinks[0].strIngredient5,
+        //      measure: response.drinks[0].strMeasure5}
+        //     {ingredient: response.drinks[0].strIngredient6,
+        //      measure: response.drinks[0].strMeasure6}
+        //     {ingredient: response.drinks[0].strIngredient7,
+        //      measure: response.drinks[0].strMeasure7}
+        //     {ingredient: response.drinks[0].strIngredient8,
+        //      measure: response.drinks[0].strMeasure8}
+        //     {ingredient: response.drinks[0].strIngredient9,
+        //      measure: response.drinks[0].strMeasure9}
+        //     {ingredient: response.drinks[0].strIngredient10,
+        //      measure: response.drinks[0].strMeasure10}
+        //     {ingredient: response.drinks[0].strIngredient11,
+        //      measure: response.drinks[0].strMeasure11}
+        //     {ingredient: response.drinks[0].strIngredient1,
+        //      measure: response.drinks[0].strMeasure1}
+        //     {ingredient: response.drinks[0].strIngredient1,
+        //      measure: response.drinks[0].strMeasure1}
+        //     {ingredient: response.drinks[0].strIngredient1,
+        //      measure: response.drinks[0].strMeasure1}
+        //     {ingredient: response.drinks[0].strIngredient1,
+        //      measure: response.drinks[0].strMeasure1}
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+        console.log(ingredients[0].ingredient)
+        console.log(ingredients[0].measure)        
+
+
     })
+       
+    
+        
+                    
+
+      
+        //
+       
+       
 
     //cocktail recipe is pulled by the API and dynamically appended to the recipe html
     //NOT WORKING
