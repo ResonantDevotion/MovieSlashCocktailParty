@@ -34,22 +34,21 @@ matchBtn.on('click', function(event){
     }).then(function (response){
         // Loops the results array within the API response
         for (let i = 0; i < response.results.length; i++)
-        // Creates a variable to randomise the array
+        // Creates a variable to randomise the array, identifys the arrays and picks a movie
         var randomIndex = Math.floor(Math.random() * response.results.length)
-        // Randomise the array and find a movie
         const randomMovie = response.results[randomIndex]
-        // Creates a variable for the movies name
+        // Creates a variable for the movies name and adds it to a 'h3' tag on the HTML
         let movieName = randomMovie.title
-        // Adds the text to a 'h3' tag
         movieHeader.text(movieName)
-        // Adds the text to the HTML
         $('#movie').append(movieHeader)
-        // Creates an image tag 
+        // Creates an image tag, pulls the image from the API and adds the image to the HTML
         const movieImg = $('<img>')
-        // Pulls the image from the API and sets it to the variable
         movieImg.attr('src', "https://image.tmdb.org/t/p/w500/" + randomMovie.poster_path)
-        // Adds the image to the HTML
         movieInfo.append(movieImg)
+        //Creates a Div tag, pulls movie synopsis from the API and adds it to the HTML
+        const moviePlot = $('<div>')
+        moviePlot.text(randomMovie.overview)
+        $('#movie').append(moviePlot)
           
         })
               
