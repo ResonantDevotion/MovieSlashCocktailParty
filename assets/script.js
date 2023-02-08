@@ -59,3 +59,4 @@ saveBtn.on('click', function(event){
 
 });
 // the chosen movie/cocktail is saved to local storage
+
