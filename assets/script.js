@@ -57,46 +57,40 @@ matchBtn.on('click', function(event){
         url: randomCocktail,
         method: "GET"
     }).then(function (response){
-        //
+        // Creates a Div tag, pulls the name from the API and adds it to the HTML
         const cocktailName = $('<div>')
         cocktailName.text(response.drinks[0].strDrink)
         cocktailInfo.append(cocktailName)
-        //
+        // Creates an image tag, pulls the image from the API and adds the image to the HTML
         const cocktailImg = $('<img>')
         cocktailImg.attr('src', response.drinks[0].strDrinkThumb)
         cocktailInfo.append(cocktailImg)
-        //
-    
+        // Loops strIngredient and strMeasure from 1-15 in the response array
         for (let i = 1; i < 15; i++) {
-           
          let ingredient = response.drinks[0]["strIngredient" + i]
          let measure = response.drinks[0]["strMeasure" + i]
-         
+         // If the value is not null, add the them to an array of objects
          if (ingredient !== null && measure !== null) {
          let ingredients = []
          ingredients.push({
             ingredient: ingredient,
             measure: measure
             })
-        
-         
-        
+        // Loops the ingredients array
         for (let i = 0; i < ingredients.length; i++) {
-           
+           // Pulls data from the array, creates a Div and adds it to the HTML
             var ingredientx = ingredients[i].ingredient
             var measurex = ingredients[i].measure
             const cocktailRecipe = $('<div>')
             cocktailRecipe.text(measurex + " of " + ingredientx)
             cocktailInfo.append(cocktailRecipe)
         }
-        }
-        }//
-        const cocktailInstructions = $('<div>')
-        cocktailInstructions.text(response.drinks[0].strInstructions)
-        cocktailInfo.append(cocktailInstructions)
-        console.log("strIngredient1, " + response.drinks[0]["strIngredient" + "i"])
-        console.log(response)
-    
+       }
+     }
+    // Creates a Div, adds text to the element and adds to the HTML
+    const cocktailInstructions = $('<div>')
+    cocktailInstructions.text(response.drinks[0].strInstructions)
+    cocktailInfo.append(cocktailInstructions)    
  })
         
 })      
