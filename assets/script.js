@@ -13,7 +13,7 @@ let randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 let duneFilm = "https://www.omdbapi.com/?t=dune&apikey=6a6153c5"
 
 // when match button is clicked, event listen and complete following functions
-matchBtn.on('click', function(event){
+matchBtn.on('click', function (event) {
     event.preventDefault();
 
     // creating a variable which ajax pulls the film API and puts into the console
@@ -22,7 +22,7 @@ matchBtn.on('click', function(event){
         url: duneFilm,
         method: 'GET'
 
-    }).then(function (response){
+    }).then(function (response) {
         const movieImg = $('<img>');
         movieImg.attr('src', response.Poster);
         movieInfo.append(movieImg);
@@ -32,7 +32,7 @@ matchBtn.on('click', function(event){
     const cocktailAPi = $.ajax({
         url: randomCocktail,
         method: "GET"
-    }).then(function (response){
+    }).then(function (response) {
         const cocktailImg = $('<img>');
         cocktailImg.attr('src', response.drinks[0].strDrinkThumb);
         cocktailInfo.append(cocktailImg);
@@ -51,7 +51,7 @@ matchBtn.on('click', function(event){
 
 
 // when save button is clicked, event listen and complete following functions
-saveBtn.on('click', function(event){
+saveBtn.on('click', function (event) {
     event.preventDefault();
 
     //NOT WORKING NOT SURE WHAT TO SAVE INTO LS YET
