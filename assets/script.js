@@ -100,32 +100,7 @@ matchBtn.on('click', function(event){
  })
         
 })      
-        
-        
-             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-  
-
-
-   
-       
-    
-        
-                    
-
-      
-       
-       
-
+ 
     //cocktail recipe is pulled by the API and dynamically appended to the recipe html
     //NOT WORKING
     // .then(function (response){
