@@ -13,17 +13,15 @@ const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
 let randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieApiKey + "&language=en-US&page=1"
 
-// function getRandom(arr) {
-//     const randomIndex = Math.floor(Math.random() * arr.length)
-//     const randomEl = arr[randomIndex]
-//     return randomEl
-// }
-
 
 
 // when match button is clicked, event listen and complete following functions
 matchBtn.on('click', function(event){
     event.preventDefault();
+    $('#movie').empty()
+    $('#cocktail').empty()
+  
+    
 
     // creating a variable which ajax pulls the film API and puts into the console
     //movie image is pulled by the API and dynamically appended to the #movie
@@ -52,7 +50,7 @@ matchBtn.on('click', function(event){
           
         })
               
-    })
+    
 
     //cocktail image is pulled by the API and dynamically appended to the #cocktail
     const cocktailAPi = $.ajax({
@@ -68,46 +66,43 @@ matchBtn.on('click', function(event){
         cocktailImg.attr('src', response.drinks[0].strDrinkThumb)
         cocktailInfo.append(cocktailImg)
         //
-        const cocktailRecipe = $('<div>')
-        console.log(response.drinks[0].strIngredient1)
-        //
+    
+        for (let i = 1; i < 15; i++) {
+           
+         let ingredient = response.drinks[0]["strIngredient" + i]
+         let measure = response.drinks[0]["strMeasure" + i]
+         
+         if (ingredient !== null && measure !== null) {
+         let ingredients = []
+         ingredients.push({
+            ingredient: ingredient,
+            measure: measure
+            })
+        
+         
+        
+        for (let i = 0; i < ingredients.length; i++) {
+           
+            var ingredientx = ingredients[i].ingredient
+            var measurex = ingredients[i].measure
+            const cocktailRecipe = $('<div>')
+            cocktailRecipe.text(measurex + " of " + ingredientx)
+            cocktailInfo.append(cocktailRecipe)
+        }
+        }
+        }//
         const cocktailInstructions = $('<div>')
         cocktailInstructions.text(response.drinks[0].strInstructions)
         cocktailInfo.append(cocktailInstructions)
-        console.log("strIngredient1, " + response.drinks[0][strIngredient1])
-        console.log(response);
-        // let ingredients = [ 
-        //     {ingredient: response.drinks[0].strIngredient1,
-        //      measure: response.drinks[0].strMeasure1}
-        //     {ingredient: response.drinks[0].strIngredient2,
-        //      measure: response.drinks[0].strMeasure2}
-        //     {ingredient: response.drinks[0].strIngredient3,
-        //      measure: response.drinks[0].strMeasure3}
-        //     {ingredient: response.drinks[0].strIngredient4,
-        //      measure: response.drinks[0].strMeasure4}
-        //     {ingredient: response.drinks[0].strIngredient5,
-        //      measure: response.drinks[0].strMeasure5}
-        //     {ingredient: response.drinks[0].strIngredient6,
-        //      measure: response.drinks[0].strMeasure6}
-        //     {ingredient: response.drinks[0].strIngredient7,
-        //      measure: response.drinks[0].strMeasure7}
-        //     {ingredient: response.drinks[0].strIngredient8,
-        //      measure: response.drinks[0].strMeasure8}
-        //     {ingredient: response.drinks[0].strIngredient9,
-        //      measure: response.drinks[0].strMeasure9}
-        //     {ingredient: response.drinks[0].strIngredient10,
-        //      measure: response.drinks[0].strMeasure10}
-        //     {ingredient: response.drinks[0].strIngredient11,
-        //      measure: response.drinks[0].strMeasure11}
-        //     {ingredient: response.drinks[0].strIngredient1,
-        //      measure: response.drinks[0].strMeasure1}
-        //     {ingredient: response.drinks[0].strIngredient1,
-        //      measure: response.drinks[0].strMeasure1}
-        //     {ingredient: response.drinks[0].strIngredient1,
-        //      measure: response.drinks[0].strMeasure1}
-        //     {ingredient: response.drinks[0].strIngredient1,
-        //      measure: response.drinks[0].strMeasure1}
-
+        console.log("strIngredient1, " + response.drinks[0]["strIngredient" + "i"])
+        console.log(response)
+    
+ })
+        
+})      
+        
+        
+             
             
             
             
@@ -118,22 +113,16 @@ matchBtn.on('click', function(event){
             
             
             
-            
-            
-            
-
-        console.log(ingredients[0].ingredient)
-        console.log(ingredients[0].measure)        
+  
 
 
-    })
+   
        
     
         
                     
 
       
-        //
        
        
 
