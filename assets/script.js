@@ -11,8 +11,6 @@ const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
 
 // variables for APIs
 let randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-// let randomFilm = "https://www.omdbapi.com/?t=" + RANDOM?? + "&apikey=6a6153c5"
-let duneFilm = "https://www.omdbapi.com/?t=dune&apikey=6a6153c5"
 const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieApiKey + "&language=en-US&page=1"
 
 // function getRandom(arr) {
