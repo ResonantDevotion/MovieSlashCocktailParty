@@ -111,7 +111,11 @@ matchBtn.on('click', function (event) {
     ingredientInfo.prepend(ingredientsHeading)
     // Creates a Div, adds text to the element and adds to the HTML
     const cocktailInstructions = $('<div>')
-    cocktailInstructions.text(response.drinks[0].strInstructions)
+
+    const cocktailInstr = response.drinks[0].strInstructions;
+    localStorage.setItem('instructions', JSON.stringify((cocktailInstr)));
+
+    cocktailInstructions.text(cocktailInstr)
     instructionInfo.append(instructionsHeading)
     instructionInfo.append(cocktailInstructions)    
  })
