@@ -34,11 +34,11 @@ function getRecipe (){
 getRecipe();
 
 
-const backBtn = $('<button>')
+const backBtn = $('#backBtn')
 
 $(document).ready(function() {
   backBtn.on('click', function() {
-
+    
     window.location.replace('../../index.html')
     }) 
     
