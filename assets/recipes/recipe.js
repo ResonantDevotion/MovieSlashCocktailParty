@@ -33,18 +33,16 @@ function getRecipe (){
 
 getRecipe();
 
-
+// Creates variable for the button ID
 const backBtn = $('#backBtn')
+// Initialises Jquery, adds a click function, takes the user to the home page and triggers the matchBtn event
 
 $(document).ready(function() {
   backBtn.on('click', function() {
-    
     window.location.replace('../../index.html')
     }) 
-    
     $('#matchBtn').click()
-   
+    // Appends it to the HTML
     $('#savedRecipes').append(backBtn)
-        
 })
 
