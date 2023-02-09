@@ -1,3 +1,4 @@
+
 const savedRecipes = $('#savedRecipes');
 const savedCocktail = 'margarita';
 // const savedCocktailURL = "www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
@@ -20,6 +21,7 @@ function getRecipe (){
 
 getRecipe();
 
+
 const backBtn = $('<button>')
 backBtn.on('click', function() {
 
@@ -29,3 +31,4 @@ backBtn.on('click', function() {
 })
 
 $('#savedRecipes').append(backBtn)
+
