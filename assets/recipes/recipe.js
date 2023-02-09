@@ -1,34 +1,51 @@
-
+// variable for all saved cocktail recipes
 const savedRecipes = $('#savedRecipes');
-const savedCocktail = 'margarita';
-// const savedCocktailURL = "www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
 
-// console.log(savedCocktailURL);
+// variable for cocktail name location
+const cocktailNameR = $('#Cocktail-Name');
 
+// variable for cocktail image location
+const cocktailImgR = $('#cocktailImg');
+
+// variable for cocktail ingredients location
+const cocktailIngR = $('#ingredients-Results');
+
+// variable for cocktail instruction location
+const cocktailInsR = $('#instructions-Results');
+
+
+//function to retrieve the cocktail info from LS and append to cocktail locations
 function getRecipe (){
     
-    savedRecipes.text("Cocktail name:" + JSON.parse(localStorage.getItem('name')));
-    savedRecipes.text("Coctail amount" + JSON.parse(localStorage.getItem('measure')));
+    //retrieving cocktail name from LS and adding to html
+    cocktailNameR.text(JSON.parse(localStorage.getItem('name')));
+
+    //retrieving cocktail ingredients from LS and adding to html
+    cocktailIngR.text(JSON.parse(localStorage.getItem('measure'), 'of', JSON.parse(localStorage.getItem('ingredients')));
+
+    //retrieving cocktail instructions from LS and adding to html
+    cocktailInsR.text(JSON.parse(localStorage.getItem('instructions')));
 
     let imageLS = JSON.parse(localStorage.getItem('image'));
+    cocktailImgR.attr("src", imageLS);
 
-    let recipeImg = $('<img>')
-
-    recipeImg.attr("src", imageLS);
-
-    savedRecipes.append(recipeImg);
 };
 
 getRecipe();
 
 
 const backBtn = $('<button>')
-backBtn.on('click', function() {
+
+$(document).ready(function() {
+  backBtn.on('click', function() {
 
     window.location.replace('../../index.html')
-
-
+    }) 
+    
+    $('#matchBtn').click()
+   
+    $('#savedRecipes').append(backBtn)
+        
 })
 
-$('#savedRecipes').append(backBtn)
 

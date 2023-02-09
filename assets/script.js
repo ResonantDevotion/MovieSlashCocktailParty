@@ -21,7 +21,7 @@ const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + mo
 
 
 // when match button is clicked, event listen and complete following functions
-matchBtn.on('click', function (event) {
+$('#matchBtn').on('click', function (event) {
     event.preventDefault();
     $('#movie').empty()
     $('#cocktail').empty()
@@ -111,7 +111,11 @@ matchBtn.on('click', function (event) {
     ingredientInfo.prepend(ingredientsHeading)
     // Creates a Div, adds text to the element and adds to the HTML
     const cocktailInstructions = $('<div>')
-    cocktailInstructions.text(response.drinks[0].strInstructions)
+
+    const cocktailInstr = response.drinks[0].strInstructions;
+    localStorage.setItem('instructions', JSON.stringify((cocktailInstr)));
+
+    cocktailInstructions.text(cocktailInstr)
     instructionInfo.append(instructionsHeading)
     instructionInfo.append(cocktailInstructions)    
  })
