@@ -7,6 +7,7 @@ const saveBtn = $('#save');
 const movieHeader = $('<h3>')
 const ingredientInfo = $('#ingredients')
 const instructionInfo = $('#instructions')
+const recipes = $('.Recipes');
 
 const movieCocktailPair = $('#movieCocktailPair');
 const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
@@ -25,7 +26,8 @@ matchBtn.on('click', function (event) {
     $('#ingredients').empty()
     $('#instructions').empty()
   
-    
+    // This line clears previous local storage
+    localStorage.clear();
 
     // creating a variable which ajax pulls the film API and puts into the console
     //movie image is pulled by the API and dynamically appended to the #movie
@@ -55,9 +57,6 @@ matchBtn.on('click', function (event) {
           
         })
               
-    
-
-
     //cocktail image is pulled by the API and dynamically appended to the #cocktail
     const cocktailAPi = $.ajax({
         url: randomCocktail,
@@ -66,11 +65,21 @@ matchBtn.on('click', function (event) {
     }).then(function (response){
         // Creates a Div tag, pulls the name from the API and adds it to the HTML
         const cocktailName = $('<h3>')
-        cocktailName.text(response.drinks[0].strDrink)
+
+        let cocktailNameStorage = response.drinks[0].strDrink
+        localStorage.setItem('name', JSON.stringify((cocktailNameStorage)));
+
+        cocktailName.text(cocktailNameStorage)
         cocktailInfo.append(cocktailName)
         // Creates an image tag, pulls the image from the API and adds the image to the HTML
         const cocktailImg = $('<img>')
-        cocktailImg.attr('src', response.drinks[0].strDrinkThumb)
+
+        let cocktailImgg = response.drinks[0].strDrinkThumb;
+        // This adds cocktail image to local storage
+        localStorage.setItem('image', JSON.stringify((cocktailImgg)));
+    
+
+        cocktailImg.attr('src', cocktailImgg)
         cocktailInfo.append(cocktailImg)
         // Loops strIngredient and strMeasure from 1-15 in the response array
         for (let i = 1; i < 15; i++) {
@@ -91,6 +100,10 @@ matchBtn.on('click', function (event) {
             const cocktailRecipe = $('<div>')
             cocktailRecipe.text(measurex + " of " + ingredientx)
             ingredientInfo.append(cocktailRecipe)
+
+            // This adds cocktail imgredients and measure to local storage
+            localStorage.setItem('ingredients', JSON.stringify((ingredientx)));
+            localStorage.setItem('measure', JSON.stringify((measurex)));
         }
        }
      }
@@ -103,24 +116,21 @@ matchBtn.on('click', function (event) {
 })      
  
 
-    //cocktail recipe is pulled by the API and dynamically appended to the recipe html
-    //NOT WORKING
-    // .then(function (response){
-    //     // console.log(response);
-    //     const recipe = response.drinks[0].strIngredient1;
-    //     console.log(recipe);
-    // });
-
-
-
 
 // when save button is clicked, event listen and complete following functions
 saveBtn.on('click', function (event) {
     event.preventDefault();
 
-    //NOT WORKING NOT SURE WHAT TO SAVE INTO LS YET
-    localStorage.setItem("movie/cocktail", JSON.stringify(movieCocktailPair));
+    //retreives info from local storage WORKING
+    console.log(JSON.parse(localStorage.getItem('name')));
+
+    // puts LS info in variable
+    let saveRecipes = JSON.parse(localStorage.getItem('name'))
+
+    //logs variable
+    console.log(saveRecipes);
+
+        
 
 });
-// the chosen movie/cocktail is saved to local storage
 
