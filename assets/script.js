@@ -22,6 +22,8 @@ matchBtn.on('click', function (event) {
     event.preventDefault();
     $('#movie').empty()
     $('#cocktail').empty()
+    $('#ingredients').empty()
+    $('#instructions').empty()
   
     
 
