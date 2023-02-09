@@ -27,7 +27,6 @@ $('#matchBtn').on('click', function (event) {
     $('#cocktail').empty()
     $('#ingredients').empty()
     $('#instructions').empty()
-  
 
     // creating a variable which ajax pulls the film API and puts into the console
     //movie image is pulled by the API and dynamically appended to the #movie
@@ -35,12 +34,12 @@ $('#matchBtn').on('click', function (event) {
         url: movieQueryURL,
         method: 'GET'
 
-    // Once the above function has run, continue
-    }).then(function (response){
+        // Once the above function has run, continue
+    }).then(function (response) {
         // Loops the results array within the API response
         for (let i = 0; i < response.results.length; i++)
-        // Creates a variable to randomise the array, identifys the arrays and picks a movie
-        var randomIndex = Math.floor(Math.random() * response.results.length)
+            // Creates a variable to randomise the array, identifys the arrays and picks a movie
+            var randomIndex = Math.floor(Math.random() * response.results.length)
         const randomMovie = response.results[randomIndex]
         // Creates a variable for the movies name and adds it to a 'h3' tag on the HTML
         let movieName = randomMovie.title
@@ -54,19 +53,20 @@ $('#matchBtn').on('click', function (event) {
         const moviePlot = $('<div>')
         moviePlot.text(randomMovie.overview)
         $('#movie').append(moviePlot)
-          
-        })
-              
+
+    })
+
     //cocktail image is pulled by the API and dynamically appended to the #cocktail
     const cocktailAPi = $.ajax({
         url: randomCocktail,
         method: "GET"
 
-    }).then(function (response){
+    }).then(function (response) {
         // Creates a Div tag, pulls the name from the API and adds it to the HTML
         const cocktailName = $('<h3>')
 
         let cocktailNameStorage = response.drinks[0].strDrink
+        console.log(response);
         localStorage.setItem('name', JSON.stringify((cocktailNameStorage)));
 
         cocktailName.text(cocktailNameStorage)
@@ -77,51 +77,55 @@ $('#matchBtn').on('click', function (event) {
         let cocktailImgg = response.drinks[0].strDrinkThumb;
         // This adds cocktail image to local storage
         localStorage.setItem('image', JSON.stringify((cocktailImgg)));
-    
+
 
         cocktailImg.attr('src', cocktailImgg)
         cocktailInfo.append(cocktailImg)
+        cocktailInfo.append(ingredientsHeading)
         // Loops strIngredient and strMeasure from 1-15 in the response array
         for (let i = 1; i < 15; i++) {
-         let ingredient = response.drinks[0]["strIngredient" + i]
-         let measure = response.drinks[0]["strMeasure" + i]
-         // If the value is not null, add the them to an array of objects
-         if (ingredient !== null && measure !== null) {
-         let ingredients = []
-         ingredients.push({
-            ingredient: ingredient,
-            measure: measure
-            })
-        // Loops the ingredients array
-        for (let i = 0; i < ingredients.length; i++) {
-           // Pulls data from the array, creates a Div and adds it to the HTML
-            var ingredientx = ingredients[i].ingredient
-            var measurex = ingredients[i].measure
-            const cocktailRecipe = $('<div>')
-            cocktailRecipe.text(measurex + " of " + ingredientx)
-            ingredientInfo.append(cocktailRecipe)
+            let ingredient = response.drinks[0]["strIngredient" + i]
+            let measure = response.drinks[0]["strMeasure" + i]
+            // If the value is not null, add the them to an array of objects
+            if (ingredient !== null && measure !== null) {
+                let ingredients = []
+                ingredients.push({
+                    ingredient: ingredient,
+                    measure: measure
+                })
+                // Loops the ingredients array
+                for (let i = 0; i < ingredients.length; i++) {
+                    // Pulls data from the array, creates a Div and adds it to the HTML
+                    var ingredientx = ingredients[i].ingredient
+                    var measurex = ingredients[i].measure
+                    const cocktailRecipe = $('<div>')
+                    cocktailRecipe.text(measurex + " of " + ingredientx)
+                    cocktailInfo.append(cocktailRecipe)
 
-            // This adds cocktail imgredients and measure to local storage
-            localStorage.setItem('ingredients', JSON.stringify((ingredientx)));
-            localStorage.setItem('measure', JSON.stringify((measurex)));
+                    // This adds cocktail imgredients and measure to local storage
+                    localStorage.setItem('ingredients', JSON.stringify((ingredientx)));
+                    localStorage.setItem('measure', JSON.stringify((measurex)));
+                }
+            }
         }
-       }
-     }
-    // Adds the heading for the Ingredients section
-    ingredientInfo.prepend(ingredientsHeading)
-    // Creates a Div, adds text to the element and adds to the HTML
-    const cocktailInstructions = $('<div>')
 
-    const cocktailInstr = response.drinks[0].strInstructions;
-    localStorage.setItem('instructions', JSON.stringify((cocktailInstr)));
 
-    cocktailInstructions.text(cocktailInstr)
-    instructionInfo.append(instructionsHeading)
-    instructionInfo.append(cocktailInstructions)    
- })
-        
-})      
- 
+        // Adds the heading for the Ingredients section
+
+        // cocktailInfo.append(ingredientsHeading)
+        // Creates a Div, adds text to the element and adds to the HTML
+        const cocktailInstructions = $('<div>')
+
+        const cocktailInstr = response.drinks[0].strInstructions;
+        localStorage.setItem('instructions', JSON.stringify((cocktailInstr)));
+
+        cocktailInstructions.text(cocktailInstr)
+        cocktailInfo.append(instructionsHeading)
+        cocktailInfo.append(cocktailInstructions)
+    })
+
+})
+
 
 
 // when save button is clicked, event listen and complete following functions
@@ -137,6 +141,6 @@ saveBtn.on('click', function (event) {
     //logs variable
     console.log(saveRecipes);
 
-    
+
 });
 
