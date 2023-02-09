@@ -28,8 +28,6 @@ matchBtn.on('click', function (event) {
     $('#ingredients').empty()
     $('#instructions').empty()
   
-    // This line clears previous local storage
-    localStorage.clear();
 
     // creating a variable which ajax pulls the film API and puts into the console
     //movie image is pulled by the API and dynamically appended to the #movie
@@ -135,7 +133,6 @@ saveBtn.on('click', function (event) {
     //logs variable
     console.log(saveRecipes);
 
-        
-
+    
 });
 
