@@ -123,7 +123,7 @@ saveBtn.on('click', function (event) {
     console.log(JSON.parse(localStorage.getItem('name')));
 
     // puts LS info in variable
-    let saveRecipes = JSON.parse(localStorage.getItem('name'))
+    let saveRecipes = JSON.parse(localStorage.getItem('name'));
 
     //logs variable
     console.log(saveRecipes);
