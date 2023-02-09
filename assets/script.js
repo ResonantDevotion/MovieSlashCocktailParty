@@ -6,7 +6,9 @@ const matchBtn = $('#matchBtn');
 const saveBtn = $('#save');
 const movieHeader = $('<h3>')
 const ingredientInfo = $('#ingredients')
+const ingredientsHeading = $('<h3>').text("Ingredients")
 const instructionInfo = $('#instructions')
+const instructionsHeading = $('<h3>').text("Instructions")
 const recipes = $('.Recipes');
 
 const movieCocktailPair = $('#movieCocktailPair');
@@ -23,6 +25,8 @@ matchBtn.on('click', function (event) {
     event.preventDefault();
     $('#movie').empty()
     $('#cocktail').empty()
+    $('#ingredients').empty()
+    $('#instructions').empty()
   
     // This line clears previous local storage
     localStorage.clear();
@@ -105,9 +109,12 @@ matchBtn.on('click', function (event) {
         }
        }
      }
+    // Adds the heading for the Ingredients section
+    ingredientInfo.prepend(ingredientsHeading)
     // Creates a Div, adds text to the element and adds to the HTML
     const cocktailInstructions = $('<div>')
     cocktailInstructions.text(response.drinks[0].strInstructions)
+    instructionInfo.append(instructionsHeading)
     instructionInfo.append(cocktailInstructions)    
  })
         
