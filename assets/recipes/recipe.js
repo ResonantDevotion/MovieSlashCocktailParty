@@ -21,7 +21,10 @@ function getRecipe (){
     cocktailNameR.text(JSON.parse(localStorage.getItem('name')));
 
     //retrieving cocktail ingredients from LS and adding to html
+    cocktailIngR.text(JSON.parse(localStorage.getItem('measure'), 'of', JSON.parse(localStorage.getItem('ingredients'))))
+
     cocktailIngR.text(JSON.parse(localStorage.getItem('measure'), 'of', JSON.parse(localStorage.getItem('ingredients'))));
+
 
     //retrieving cocktail instructions from LS and adding to html
     cocktailInsR.text(JSON.parse(localStorage.getItem('instructions')));
@@ -47,5 +50,4 @@ $(document).ready(function() {
     $('#savedRecipes').append(backBtn)
         
 })
-
 
