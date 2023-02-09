@@ -167,3 +167,32 @@ h2 {
     text-align: center;
     font-weight: 700;
 }
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    background-color: black;
+    padding: 64px 0px;
+    color: white;
+}
+
+.owners {
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.owners a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.owners a:hover {
+    color: var(--pink);
+}
+
+.credit img {
+    width: 125px;
+    height: auto;
+}
