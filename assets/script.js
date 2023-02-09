@@ -21,7 +21,7 @@ const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + mo
 
 
 // when match button is clicked, event listen and complete following functions
-matchBtn.on('click', function (event) {
+$('#matchBtn').on('click', function (event) {
     event.preventDefault();
     $('#movie').empty()
     $('#cocktail').empty()
