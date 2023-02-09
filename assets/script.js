@@ -24,6 +24,7 @@ matchBtn.on('click', function (event) {
     $('#movie').empty()
     $('#cocktail').empty()
   
+    // This line clears previous local storage
     localStorage.clear();
 
     // creating a variable which ajax pulls the film API and puts into the console
@@ -72,6 +73,7 @@ matchBtn.on('click', function (event) {
         const cocktailImg = $('<img>')
 
         let cocktailImgg = response.drinks[0].strDrinkThumb;
+        // This adds cocktail image to local storage
         localStorage.setItem('image', JSON.stringify((cocktailImgg)));
     
 
@@ -97,7 +99,7 @@ matchBtn.on('click', function (event) {
             cocktailRecipe.text(measurex + " of " + ingredientx)
             ingredientInfo.append(cocktailRecipe)
 
-
+            // This adds cocktail imgredients and measure to local storage
             localStorage.setItem('ingredients', JSON.stringify((ingredientx)));
             localStorage.setItem('measure', JSON.stringify((measurex)));
         }
@@ -117,14 +119,16 @@ matchBtn.on('click', function (event) {
 saveBtn.on('click', function (event) {
     event.preventDefault();
 
+    //retreives info from local storage WORKING
     console.log(JSON.parse(localStorage.getItem('name')));
 
+    // puts LS info in variable
     let saveRecipes = JSON.parse(localStorage.getItem('name'))
 
+    //logs variable
     console.log(saveRecipes);
 
         
 
 });
-// the chosen movie/cocktail is saved to local storage
 
