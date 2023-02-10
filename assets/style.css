@@ -128,37 +128,64 @@ main {
     gap: 50px;
 }
 
-.col-lg-6 {
-    width: calc(50% - 25px);
+@media only screen and (min-width: 768px) {
+    .col-md-6 {
+        width: calc(50% - 25px);
+    }
 }
+
+/* .col {
+    width: calc(50% - 25px);
+} */
 
 #movie, #cocktail {
-    min-height: 500px;
+    min-height: 600px;
     border: 5px dotted black;
     position: relative;
+    padding: 25px;
 }
-
-/* #movie:after, #cocktail:after {
-    content: '?';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 168px;
-    z-index: 0;
-} */
 
 #movie h3, #movie img, #cocktail h3, #cocktail img {
     position: relative;
     z-index: 1;
+    margin-bottom: 25px;
+}
+
+#movie h3:first-child, #cocktail h3:first-child {
+    min-height: 75px;
 }
 
 #movie img, #cocktail img {
-    height: 500px;
+    height: 325px;
+}
+
+@media only screen and (min-width: 510px) {
+    #movie img, #cocktail img {
+        height: 550px;
+    }
+}
+
+@media only screen and (min-width: 767px) {
+    #movie img, #cocktail img {
+        height: 450px;
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+    #movie img, #cocktail img {
+        height: 600px;
+    }
+}
+
+#instructions {
+    margin-top: 25px;
 }
 
 .top {
     margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h2 {
@@ -166,6 +193,11 @@ h2 {
     text-transform: uppercase;
     text-align: center;
     font-weight: 700;
+    margin-bottom: 25px;
+}
+
+#matchBtn, .save-recipe {
+    text-align: center;
 }
 
 /* FOOTER */
