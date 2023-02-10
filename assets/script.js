@@ -10,12 +10,11 @@ const ingredientsHeading = $('<h3>').text("Ingredients")
 const instructionInfo = $('#instructions')
 const instructionsHeading = $('<h3>').text("Instructions")
 const recipes = $('.Recipes');
-
-const movieCocktailPair = $('#movieCocktailPair');
-const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
+const savedCocktailArray = []
 
 // variables for APIs
-let randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
+const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieApiKey + "&language=en-US&page=1"
 
 
@@ -66,22 +65,18 @@ $('#matchBtn').on('click', function (event) {
         const cocktailName = $('<h3>')
 
         let cocktailNameStorage = response.drinks[0].strDrink
-        console.log(response);
         localStorage.setItem('name', JSON.stringify((cocktailNameStorage)));
 
         cocktailName.text(cocktailNameStorage)
         cocktailInfo.append(cocktailName)
         // Creates an image tag, pulls the image from the API and adds the image to the HTML
         const cocktailImg = $('<img>')
-
         let cocktailImgg = response.drinks[0].strDrinkThumb;
-        // This adds cocktail image to local storage
-        localStorage.setItem('image', JSON.stringify((cocktailImgg)));
-
-
         cocktailImg.attr('src', cocktailImgg)
         cocktailInfo.append(cocktailImg)
         cocktailInfo.append(ingredientsHeading)
+
+
         // Loops strIngredient and strMeasure from 1-15 in the response array
         for (let i = 1; i < 15; i++) {
             let ingredient = response.drinks[0]["strIngredient" + i]
@@ -101,10 +96,6 @@ $('#matchBtn').on('click', function (event) {
                     const cocktailRecipe = $('<div>')
                     cocktailRecipe.text(measurex + " of " + ingredientx)
                     cocktailInfo.append(cocktailRecipe)
-
-                    // This adds cocktail imgredients and measure to local storage
-                    localStorage.setItem('ingredients', JSON.stringify((ingredientx)));
-                    localStorage.setItem('measure', JSON.stringify((measurex)));
                 }
             }
         }
@@ -115,32 +106,21 @@ $('#matchBtn').on('click', function (event) {
         // cocktailInfo.append(ingredientsHeading)
         // Creates a Div, adds text to the element and adds to the HTML
         const cocktailInstructions = $('<div>')
-
         const cocktailInstr = response.drinks[0].strInstructions;
-        localStorage.setItem('instructions', JSON.stringify((cocktailInstr)));
-
         cocktailInstructions.text(cocktailInstr)
         cocktailInfo.append(instructionsHeading)
         cocktailInfo.append(cocktailInstructions)
     })
-
 })
 
-
-
-// when save button is clicked, event listen and complete following functions
-saveBtn.on('click', function (event) {
-    event.preventDefault();
-
-    //retreives info from local storage WORKING
-    console.log(JSON.parse(localStorage.getItem('name')));
-
-    // puts LS info in variable
-    let saveRecipes = JSON.parse(localStorage.getItem('name'));
-
-    //logs variable
-    console.log(saveRecipes);
-
-
+saveBtn.on('click', function () {
+    //sets variable which pulls cocktail name from LS
+    let desiredCocktail = JSON.parse(localStorage.getItem('name'));
+    //sets the desired cocktail name into LS under a different key
+    localStorage.setItem('savedCocktail', JSON.stringify((desiredCocktail)));
+    //sets the saved cocktail into a variable
+    let savedCocktail = JSON.parse(localStorage.getItem('savedCocktail'));
+    //Pushes the saved cocktail into the savedCocktailArray
+    savedCocktailArray.push(savedCocktail)
+    console.log(savedCocktailArray)
 });
-
