@@ -128,7 +128,7 @@ main {
     gap: 50px;
 }
 
-.col-6 {
+.col-lg-6 {
     width: calc(50% - 25px);
 }
 
@@ -138,7 +138,7 @@ main {
     position: relative;
 }
 
-#movie:after, #cocktail:after {
+/* #movie:after, #cocktail:after {
     content: '?';
     position: absolute;
     top: 50%;
@@ -146,7 +146,7 @@ main {
     transform: translate(-50%, -50%);
     font-size: 168px;
     z-index: 0;
-}
+} */
 
 #movie h3, #movie img, #cocktail h3, #cocktail img {
     position: relative;
