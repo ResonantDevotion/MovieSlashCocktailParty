@@ -149,6 +149,11 @@ main {
 
 .row {
     gap: 50px;
+    margin-bottom: 50px;
+}
+
+.row:last-child {
+    margin-bottom: unset;
 }
 
 @media only screen and (min-width: 768px) {
@@ -205,7 +210,6 @@ main {
 }
 
 .top {
-    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
