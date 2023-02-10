@@ -7,22 +7,24 @@
 
 body {
     font-family: 'Roboto Mono', monospace;
+    overflow-x: hidden;
 }
 
 button {
     font-size: 14px;
-    color: white;
-    background-color: var(--blue);
+    color: var(--pink);
+    background-color: transparent;
+    border: 2px solid var(--pink);
     text-transform: uppercase;
     border-radius: 3px;
     padding: 10px 15px;
-    border: 0;
     transition: all 0.3s ease-in-out;
     margin-bottom: 25px;
 }
 
 button:hover {
     background-color: var(--pink);
+    color: white;
 }
 
 img {
@@ -32,16 +34,22 @@ img {
 }
 
 section {
-    padding: 64px;
+    padding: 32px;
 }
 
-.container {
-    padding: 0;
+@media only screen and (min-width: 768px) {
+    section {
+        padding: 64px;
+    }
+
+    .container {
+        padding: 0;
+    }
 }
 
 /* HEADER */
 header {
-    padding: 10px 0px;
+    padding: 10px 32px;
     background-color: black;
     position: fixed;
     width: 100%;
@@ -61,10 +69,6 @@ header {
 
 header .row {
     align-items: center;
-}
-
-h1 {
-    font-size: 34px;
 }
 
 .nav-link {
@@ -98,7 +102,7 @@ h1 {
     position: relative;
 }
 
-.jumbotron .container:after {
+/* .jumbotron .container:after {
     content: url('images/logomarque.svg');
     position: absolute;
     bottom: -112.5px;
@@ -106,16 +110,35 @@ h1 {
     width: 225px;
     height: 225px;
     transform: rotate(12.5deg);
-}
+} */
 
-.jumbotron .content {
-    width: 75%;
+@media only screen and (min-width: 1080px) {
+    .jumbotron .container:after {
+        content: url('images/logomarque.svg');
+        position: absolute;
+        bottom: -112.5px;
+        right: 0;
+        width: 225px;
+        height: 225px;
+        transform: rotate(12.5deg);
+    }
+
+    .jumbotron .content {
+        width: 75%;
+    }
 }
 
 h1 {
-    font-size: 56px;
-    line-height: 59px;
+    font-size: 38px;
+    line-height: 41px;
     font-weight: 700;
+}
+
+@media only screen and (min-width: 768px) {
+    h1 {
+        font-size: 56px;
+        line-height: 59px;
+    }
 }
 
 /* MAIN */
@@ -207,6 +230,11 @@ footer {
     background-color: black;
     padding: 64px 0px;
     color: white;
+}
+
+footer .col {
+    width: calc(100% - 64px);
+    padding: 0;
 }
 
 .owners {
