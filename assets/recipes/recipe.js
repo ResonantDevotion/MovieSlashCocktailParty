@@ -1,20 +1,17 @@
 // variable for all saved cocktail recipes
 const savedRecipes = $('#savedRecipes');
 
-
-
-
 // // variable for cocktail name location
-// const cocktailNameR = $('#Cocktail-Name');
+const cocktailNameR = $('#Cocktail-Name');
 
-// // variable for cocktail image location
-// const cocktailImgR = $('#cocktailImg');
+// variable for cocktail image location
+const cocktailImgR = $('#cocktailImg');
 
-// // variable for cocktail ingredients location
-// const cocktailIngR = $('#ingredients-Results');
+// variable for cocktail ingredients location
+const cocktailIngR = $('#ingredients-Results');
 
-// // variable for cocktail instruction location
-// const cocktailInsR = $('#instructions-Results');
+// variable for cocktail instruction location
+const cocktailInsR = $('#instructions-Results');
 
 
 const savedCocktailArr = JSON.parse(localStorage.getItem('savedCocktailArray'));
@@ -22,66 +19,59 @@ console.log(savedCocktailArr);
 
 
 
-function dynamicSavedCocktailButton(){
-    let cocktailListItem = $("<button>").text("savedCocktail").attr("id", 'savedCocktail[i]');
+function dynamicSavedCocktailButton(i){
 
-    savedRecipes.append(cocktailListItem)
+    for (let x = 0; x < savedCocktailArr.length; x++){
+        let cocktailListItem = $("<button>").text(i).attr("id", "savedCocktail" + x);
+        savedRecipes.append(cocktailListItem)
 
-    cocktailListItem.on('click', function (event) {
-        event.preventDefault();
-        let savedCocktail = JSON.parse(localStorage.getItem('savedCocktail'));
-        const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
-        console.log(cocktailNameURL);
+        cocktailListItem.on('click', function (event) {
+            event.preventDefault();
+            //replaces any spaces with % so able to search in the API
+            let savedCocktail = i.replace( / +/g, '%');
+            // replaceAll(' ','');
+            console.log(savedCocktail);
+            const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
+            console.log(cocktailNameURL);
+            
+            $.ajax({
+                url: cocktailNameURL,
+                method: "GET"
+        
+            }).then(function (response) {
 
+        let cocktailNameSrc = response.drinks[0].strDrink;
+        cocktailNameR.text(cocktailNameSrc);
 
-    });
+        let cocktailImgSrc = response.drinks[0].strDrinkThumb;
+        cocktailImgR.attr('src', cocktailImgSrc);
+
+        for (let z = 1; z < 15; z++) {
+            let ingredient = response.drinks[0]["strIngredient" + z]
+            let measure = response.drinks[0]["strMeasure" + z]
+            // If the value is not null, add the them to an array of objects
+            if (ingredient !== null && measure !== null) {
+                let ingredients = []
+                ingredients.push({
+                    ingredient: ingredient,
+                    measure: measure
+                })
+                // Loops the ingredients array
+                for (let y = 0; y < ingredients.length; y++) {
+                    // Pulls data from the array, creates a Div and adds it to the HTML
+                    var ingredientx = ingredients[y].ingredient
+                    var measurex = ingredients[y].measure
+                    cocktailIngR.text(measurex + " of " + ingredientx)
+                }
+            }
+        }
+        const cocktailInstrSrc = response.drinks[0].strInstructions;
+        cocktailInsR.text(cocktailInstrSrc)
+            });
+        });
+    }
 }
 savedCocktailArr.forEach(dynamicSavedCocktailButton);
-
-// // creates a function 
-// function createSavedCocktailButton(savedCocktail) {
-//     //sets a variable that makes a button with a saved cocktail name inside
-//     let cocktailListItem = $("<button>").text(savedCocktail);
-
-
-
-//     //c
-//     cocktailListItem.on('click', function (event) {
-//         event.preventDefault();
-
-//         const savedCocktail = JSON.parse(localStorage.getItem('savedCocktail'));
-
-//         // variable to pull cocktail API w user saved cocktail
-//         const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
-//         console.log(savedCocktail);
-//         console.log(cocktailNameURL);
-
-//         //function to run the API query
-//         $.ajax({
-//             url: cocktailNameURL,
-//             method: 'GET'
-//         }).then(function (response) {
-//             console.log(response);
-//         });
-//     })
-
-//     savedRecipes.append(cocktailListItem);
-
-// }
-
-
-
-// //TO DO
-// // - Put saved cocktail into array
-
-
-
-// createSavedCocktailButton();
-
-
-
-
-
 
 
 
