@@ -61,6 +61,7 @@ $('#matchBtn').on('click', function (event) {
         method: "GET"
 
     }).then(function (response) {
+        console.log(response);
         // Creates a Div tag, pulls the name from the API and adds it to the HTML
         const cocktailName = $('<h3>')
 
@@ -113,16 +114,19 @@ $('#matchBtn').on('click', function (event) {
     })
 })
 
-saveBtn.on('click', function () {
+saveBtn.on('click', function (event) {
+    event.preventDefault();
     //sets variable which pulls cocktail name from LS
     let desiredCocktail = JSON.parse(localStorage.getItem('name'));
     //sets the desired cocktail name into LS under a different key
     localStorage.setItem('savedCocktail', JSON.stringify((desiredCocktail)));
     //sets the saved cocktail into a variable
     let savedCocktail = JSON.parse(localStorage.getItem('savedCocktail'));
+
     //Pushes the saved cocktail into the savedCocktailArray
     savedCocktailArray.push(savedCocktail)
     console.log(savedCocktailArray)
+
     localStorage.setItem('savedCocktailArray', JSON.stringify(savedCocktailArray));
 
     let savedCocktailArr = JSON.parse(localStorage.getItem('savedCocktailArray'));
