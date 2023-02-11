@@ -22,7 +22,7 @@ console.log(savedCocktailArr);
 function dynamicSavedCocktailButton(i){
 
     for (let x = 0; x < savedCocktailArr.length; x++){
-        let cocktailListItem = $("<button>").text(i).attr("id", "savedCocktail" + x);
+        let cocktailListItem = $("<button>").text(i).attr("id", "savedCocktail" + x).attr("class", "savedCocktailButtons");
         savedRecipes.append(cocktailListItem)
 
         cocktailListItem.on('click', function (event) {
