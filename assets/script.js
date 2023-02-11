@@ -123,4 +123,26 @@ saveBtn.on('click', function () {
     //Pushes the saved cocktail into the savedCocktailArray
     savedCocktailArray.push(savedCocktail)
     console.log(savedCocktailArray)
+    localStorage.setItem('savedCocktailArray', JSON.stringify(savedCocktailArray));
+
+    let savedCocktailArr = JSON.parse(localStorage.getItem('savedCocktailArray'));
+    console.log(savedCocktailArr);
+
 });
+
+savedCocktailArray.forEach(dynamicSavedCocktailButton);
+
+function dynamicSavedCocktailButton(i){
+
+
+    let cocktailListItem = $("<button>").text(savedCocktail);
+
+    cocktailListItem.on('click', function (event) {
+        event.preventDefault();
+        let savedCocktail = JSON.parse(localStorage.getItem('savedCocktail'));
+        const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
+        console.log(cocktailNameURL);
+
+
+    });
+}
