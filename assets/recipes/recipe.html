@@ -26,38 +26,34 @@
             </div>
             <nav class="nav">
                 <a class="nav-link" href="../../index.html"> Home</a>
-                <a class="nav-link active" href="./assets/recipes/recipe.html">Recipes</a>
+                <a class="nav-link active" href="./recipe.html">Recipes</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section>
-            <div class="col">
-                <h1> YOUR SAVED OPTIONS</h1>
-                <br>
-                <div class="container-fluid" style="max-width: 1400px">
-                    <div class="row">
-                        <aside id="savedRecipes" class="col-lg-3 pb-3"> List of results go here</aside>
-                        <div id="cocktail-result" class="col">
-                            <button id="backBtn">Get me another match!</button>
-                            <h2> Your cocktail </h2>
-                            <section>
-                                <div>
-                                    <h4 id="Cocktail-Name"> LONG ISLand ICE TEA </h4>
-                                    <div> <img id="cocktailImg" src="" alt=""> </div>
-                                </div>
-                                <div id="The-Recipe">
-                                    <h5> The Recipe </h5>
-                                    <div id="ingredients-Results">The Recipe will go here </div>
-                                </div>
-                                <div id="Recipe-Results">
-                                    <h5> The instructions</h5>
-                                    <div id="instructions-Results">The instructions will go here </div>
-                                </div>
-                            </section>
-                        </div>
+        <section class="saved-recipes">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Your saved recipes</h1>
+                        <p>Hopefully you can remember the film pairing!</p>
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <aside id="recipe-list">
+                            <button id="backBtn">
+                                Get me another match!
+                            </button>
+                        </aside>
+                    </div>
+                    <div class="col-md-8">
+                        <section id="single-cocktail">
+                        </section>
+                    </div>
+
                 </div>
             </div>
         </section>

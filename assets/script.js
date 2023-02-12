@@ -4,13 +4,12 @@ const movieInfo = $('#movie');
 const cocktailInfo = $('#cocktail');
 const matchBtn = $('#matchBtn');
 const saveBtn = $('#save');
-const movieHeader = $('<h3>')
-const ingredientInfo = $('#ingredients')
-const ingredientsHeading = $('<h3>').text("Ingredients")
-const instructionInfo = $('#instructions')
-const instructionsHeading = $('<h3>').text("Instructions")
+const movieHeader = $('<h3>');
+const moviePlotHeading = $('<h4>').text("Plot").attr('class', 'plot');
+const ingredientsHeading = $('<h4>').text("Ingredients").attr('class', 'ingredients');
+const instructionsHeading = $('<h4>').text("Instructions").attr('class', 'instructions');
 const recipes = $('.Recipes');
-const savedCocktailArray = []
+const savedCocktailArray = [];
 
 // variables for APIs
 const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
@@ -24,8 +23,6 @@ $('#matchBtn').on('click', function (event) {
     event.preventDefault();
     $('#movie').empty()
     $('#cocktail').empty()
-    $('#ingredients').empty()
-    $('#instructions').empty()
 
     // creating a variable which ajax pulls the film API and puts into the console
     //movie image is pulled by the API and dynamically appended to the #movie
@@ -66,6 +63,7 @@ $('#matchBtn').on('click', function (event) {
         const cocktailName = $('<h3>')
 
         let cocktailNameStorage = response.drinks[0].strDrink
+
         localStorage.setItem('name', JSON.stringify((cocktailNameStorage)));
 
         cocktailName.text(cocktailNameStorage)
@@ -136,7 +134,7 @@ saveBtn.on('click', function (event) {
 
 savedCocktailArray.forEach(dynamicSavedCocktailButton);
 
-function dynamicSavedCocktailButton(i){
+function dynamicSavedCocktailButton(i) {
 
 
     let cocktailListItem = $("<button>").text(savedCocktail);

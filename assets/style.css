@@ -1,8 +1,7 @@
 /* GLOBAL */
 :root {
     --pink: magenta;
-    --blue: blue;
-    --green: lime;
+    --grey: #f2f2f2;
 }
 
 body {
@@ -35,16 +34,6 @@ img {
 
 section {
     padding: 32px;
-}
-
-@media only screen and (min-width: 768px) {
-    section {
-        padding: 64px;
-    }
-
-    .container {
-        padding: 0;
-    }
 }
 
 /* HEADER */
@@ -93,7 +82,7 @@ header .row {
     background-color: var(--pink);
 }
 
-/* JUMBOTRON */
+/* HOME PAGE */
 .jumbotron {
     padding-top: calc(128px + 64px);
 }
@@ -102,49 +91,15 @@ header .row {
     position: relative;
 }
 
-/* .jumbotron .container:after {
-    content: url('images/logomarque.svg');
-    position: absolute;
-    bottom: -112.5px;
-    right: 0;
-    width: 225px;
-    height: 225px;
-    transform: rotate(12.5deg);
-} */
-
-@media only screen and (min-width: 1080px) {
-    .jumbotron .container:after {
-        content: url('images/logomarque.svg');
-        position: absolute;
-        bottom: -112.5px;
-        right: 0;
-        width: 225px;
-        height: 225px;
-        transform: rotate(12.5deg);
-    }
-
-    .jumbotron .content {
-        width: 75%;
-    }
-}
-
 h1 {
     font-size: 38px;
     line-height: 41px;
     font-weight: 700;
+    margin-bottom: 25px;
 }
 
-@media only screen and (min-width: 768px) {
-    h1 {
-        font-size: 56px;
-        line-height: 59px;
-    }
-}
-
-/* MAIN */
-
-main {
-    background-color: #f2f2f2;
+.pairing {
+    background-color: var(--grey);
 }
 
 .row {
@@ -156,17 +111,7 @@ main {
     margin-bottom: unset;
 }
 
-@media only screen and (min-width: 768px) {
-    .col-md-6 {
-        width: calc(50% - 25px);
-    }
-}
-
-/* .col {
-    width: calc(50% - 25px);
-} */
-
-#movie, #cocktail {
+#movie, #cocktail, #single-cocktail {
     min-height: 600px;
     border: 5px dotted black;
     position: relative;
@@ -183,26 +128,12 @@ main {
     min-height: 75px;
 }
 
+.instructions {
+    margin-top: 25px;
+}
+
 #movie img, #cocktail img {
     height: 325px;
-}
-
-@media only screen and (min-width: 510px) {
-    #movie img, #cocktail img {
-        height: 550px;
-    }
-}
-
-@media only screen and (min-width: 767px) {
-    #movie img, #cocktail img {
-        height: 450px;
-    }
-}
-
-@media only screen and (min-width: 1080px) {
-    #movie img, #cocktail img {
-        height: 600px;
-    }
 }
 
 #instructions {
@@ -227,8 +158,49 @@ h2 {
     text-align: center;
 }
 
-/* FOOTER */
+/* RECIPES PAGE */
+.saved-recipes {
+    padding-top: calc(128px + 64px);
+}
 
+.saved-recipes .row:first-child {
+    margin-bottom: 100px;
+}
+
+.saved-cocktail-buttons:first-child {
+    border: 1px solid black;
+}
+
+.saved-cocktail-buttons {
+    display: block;
+    border: 1px solid black;
+    border-top: 0;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.saved-cocktail-buttons:hover {
+    background-color: var(--grey);
+    color: black;
+}
+
+#single-cocktail img {
+    margin-bottom: 25px;
+}
+
+#backBtn {
+    margin-top: 25px;
+    width: 100%;
+}
+
+.cocktail-title {
+    text-align: left;
+}
+
+/* FOOTER */
 footer {
     text-align: center;
     background-color: black;
@@ -259,4 +231,69 @@ footer .col {
 .credit img {
     width: 125px;
     height: auto;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 510px) {
+
+    #movie img,
+    #cocktail img {
+        height: 550px;
+    }
+
+}
+
+@media only screen and (min-width: 767px) {
+
+    section {
+        padding: 64px;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 56px;
+        line-height: 59px;
+    }
+
+    #movie img, #cocktail img {
+        height: 450px;
+    }
+
+    .col-md-6 {
+        width: calc(50% - 25px);
+    }
+
+    .col-md-4 {
+        width: calc(33.333% - 25px);
+    }
+
+    .col-md-8 {
+        width: calc(66.666% - 25px);
+    }
+
+}
+
+@media only screen and (min-width: 1080px) {
+
+    .jumbotron .container:after {
+        content: url('images/logomarque.svg');
+        position: absolute;
+        bottom: -112.5px;
+        right: 0;
+        width: 225px;
+        height: 225px;
+        transform: rotate(12.5deg);
+    }
+
+    .jumbotron .content {
+        width: 75%;
+    }
+
+    #movie img, #cocktail img {
+        height: 600px;
+    }
+
 }

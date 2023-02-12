@@ -1,8 +1,10 @@
 // variable for all saved cocktail recipes
-const savedRecipes = $('#savedRecipes');
+const recipeList = $('#recipe-list');
 
 // // variable for cocktail name location
 const cocktailNameR = $('#Cocktail-Name');
+
+const singleCocktail = $('#single-cocktail');
 
 // variable for cocktail image location
 const cocktailImgR = $('#cocktailImg');
@@ -13,72 +15,79 @@ const cocktailIngR = $('#ingredients-Results');
 // variable for cocktail instruction location
 const cocktailInsR = $('#instructions-Results');
 
+const recipeIngredientsHeading = $('<h4>').text("Ingredients").attr('class', 'ingredients');
+const recipeInstructionsHeading = $('<h4>').text("Instructions").attr('class', 'instructions');
+
 
 const savedCocktailArr = JSON.parse(localStorage.getItem('savedCocktailArray'));
 console.log(savedCocktailArr);
 
 
 
-function dynamicSavedCocktailButton(i){
+function dynamicSavedCocktailButton(item, x) {
+    let cocktailListItem = $("<a>").text(item).attr("id", "savedCocktail" + x).attr("class", "saved-cocktail-buttons");
+    recipeList.append(cocktailListItem)
 
-    for (let x = 0; x < savedCocktailArr.length; x++){
-        let cocktailListItem = $("<button>").text(i).attr("id", "savedCocktail" + x).attr("class", "savedCocktailButtons");
-        savedRecipes.append(cocktailListItem)
+    cocktailListItem.on('click', function (event) {
+        event.preventDefault();
+        //replaces any spaces with % so able to search in the API
+        let savedCocktail = item.replace(/ +/g, '%');
+        // replaceAll(' ','');
+        console.log(savedCocktail);
+        const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
+        console.log(cocktailNameURL);
 
-        cocktailListItem.on('click', function (event) {
-            event.preventDefault();
-            //replaces any spaces with % so able to search in the API
-            let savedCocktail = i.replace( / +/g, '%');
-            // replaceAll(' ','');
-            console.log(savedCocktail);
-            const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
-            console.log(cocktailNameURL);
-            
-            $.ajax({
-                url: cocktailNameURL,
-                method: "GET"
-        
-            }).then(function (response) {
+        $.ajax({
+            url: cocktailNameURL,
+            method: "GET"
 
-        let cocktailNameSrc = response.drinks[0].strDrink;
-        cocktailNameR.text(cocktailNameSrc);
+        }).then(function (response) {
+            $('#single-cocktail').empty()
+            $('#cocktail').empty()
 
-        let cocktailImgSrc = response.drinks[0].strDrinkThumb;
-        cocktailImgR.attr('src', cocktailImgSrc);
+            let cocktailName = $('<h2>').text(response.drinks[0].strDrink).attr('class', 'cocktail-title');
+            let cocktailImg = $('<img>').attr('src', response.drinks[0].strDrinkThumb);
+            singleCocktail.append(cocktailName, cocktailImg, recipeIngredientsHeading);
 
-        for (let z = 1; z < 15; z++) {
-            let ingredient = response.drinks[0]["strIngredient" + z]
-            let measure = response.drinks[0]["strMeasure" + z]
-            // If the value is not null, add the them to an array of objects
-            if (ingredient !== null && measure !== null) {
-                let ingredients = []
-                ingredients.push({
-                    ingredient: ingredient,
-                    measure: measure
-                })
-                // Loops the ingredients array
-                for (let y = 0; y < ingredients.length; y++) {
-                    // Pulls data from the array, creates a Div and adds it to the HTML
-                    var ingredientx = ingredients[y].ingredient
-                    var measurex = ingredients[y].measure
-                    cocktailIngR.text(measurex + " of " + ingredientx)
+            let cocktailNameSrc = response.drinks[0].strDrink;
+            cocktailNameR.text(cocktailNameSrc);
+
+            let cocktailImgSrc = response.drinks[0].strDrinkThumb;
+            cocktailImgR.attr('src', cocktailImgSrc);
+
+            for (let z = 1; z < 15; z++) {
+                let ingredient = response.drinks[0]["strIngredient" + z]
+                let measure = response.drinks[0]["strMeasure" + z]
+                // If the value is not null, add the them to an array of objects
+                if (ingredient !== null && measure !== null) {
+                    let ingredients = []
+                    ingredients.push({
+                        ingredient: ingredient,
+                        measure: measure
+
+                    })
+                    // Loops the ingredients array
+                    for (let y = 0; y < ingredients.length; y++) {
+                        // Pulls data from the array, creates a Div and adds it to the HTML
+                        let ingredientx = ingredients[y].ingredient;
+                        let measurex = ingredients[y].measure;
+
+                        let cocktailIngR = $('<div>').text(measurex + " of " + ingredientx);
+                        singleCocktail.append(cocktailIngR);
+                    }
                 }
             }
-        }
-        const cocktailInstrSrc = response.drinks[0].strInstructions;
-        cocktailInsR.text(cocktailInstrSrc)
-            });
+            const cocktailInstrSrc = response.drinks[0].strInstructions;
+            let cocktailInsR = $('<p>').text(cocktailInstrSrc);
+            singleCocktail.append(recipeInstructionsHeading, cocktailInsR);
         });
-    }
+    });
 }
-savedCocktailArr.forEach(dynamicSavedCocktailButton);
 
 
-
-
-
-
-
+savedCocktailArr.forEach(function (item, index) {
+    dynamicSavedCocktailButton(item, index);
+});
 
 // Creates variable for the button ID
 const backBtn = $('#backBtn')
@@ -90,6 +99,6 @@ $(document).ready(function () {
     })
     $('#matchBtn').click()
     // Appends it to the HTML
-    $('#savedRecipes').append(backBtn)
+    $('#recipe-list').append(backBtn);
 })
 
