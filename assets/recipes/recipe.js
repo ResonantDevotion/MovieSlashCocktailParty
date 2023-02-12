@@ -15,6 +15,9 @@ const cocktailIngR = $('#ingredients-Results');
 // variable for cocktail instruction location
 const cocktailInsR = $('#instructions-Results');
 
+const recipeIngredientsHeading = $('<h4>').text("Ingredients").attr('class', 'ingredients');
+const recipeInstructionsHeading = $('<h4>').text("Instructions").attr('class', 'instructions');
+
 
 const savedCocktailArr = JSON.parse(localStorage.getItem('savedCocktailArray'));
 console.log(savedCocktailArr);
@@ -41,6 +44,12 @@ function dynamicSavedCocktailButton(i) {
                 method: "GET"
 
             }).then(function (response) {
+                $('#single-cocktail').empty()
+                $('#cocktail').empty()
+
+                let cocktailName = $('<h2>').text(response.drinks[0].strDrink);
+                let cocktailImg = $('<img>').attr('src', response.drinks[0].strDrinkThumb);
+                singleCocktail.append(cocktailName, cocktailImg, recipeIngredientsHeading, recipeInstructionsHeading);
 
                 let cocktailNameSrc = response.drinks[0].strDrink;
                 cocktailNameR.text(cocktailNameSrc);
