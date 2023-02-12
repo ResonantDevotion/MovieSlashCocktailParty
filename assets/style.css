@@ -163,6 +163,10 @@ h2 {
     padding-top: calc(128px + 64px);
 }
 
+.saved-recipes .row:first-child {
+    margin-bottom: 100px;
+}
+
 .saved-cocktail-buttons:first-child {
     border: 1px solid black;
 }
