@@ -102,16 +102,6 @@ header .row {
     position: relative;
 }
 
-/* .jumbotron .container:after {
-    content: url('images/logomarque.svg');
-    position: absolute;
-    bottom: -112.5px;
-    right: 0;
-    width: 225px;
-    height: 225px;
-    transform: rotate(12.5deg);
-} */
-
 @media only screen and (min-width: 1080px) {
     .jumbotron .container:after {
         content: url('images/logomarque.svg');
@@ -142,7 +132,6 @@ h1 {
 }
 
 /* MAIN */
-
 main {
     background-color: #f2f2f2;
 }
@@ -162,10 +151,6 @@ main {
     }
 }
 
-/* .col {
-    width: calc(50% - 25px);
-} */
-
 #movie, #cocktail {
     min-height: 600px;
     border: 5px dotted black;
@@ -181,6 +166,10 @@ main {
 
 #movie h3:first-child, #cocktail h3:first-child {
     min-height: 75px;
+}
+
+.instructions {
+    margin-top: 25px;
 }
 
 #movie img, #cocktail img {
@@ -228,7 +217,6 @@ h2 {
 }
 
 /* FOOTER */
-
 footer {
     text-align: center;
     background-color: black;

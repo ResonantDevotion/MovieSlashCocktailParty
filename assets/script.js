@@ -4,13 +4,14 @@ const movieInfo = $('#movie');
 const cocktailInfo = $('#cocktail');
 const matchBtn = $('#matchBtn');
 const saveBtn = $('#save');
-const movieHeader = $('<h3>')
-const ingredientInfo = $('#ingredients')
-const ingredientsHeading = $('<h3>').text("Ingredients").attr('class', 'ingredients')
-const instructionInfo = $('#instructions')
-const instructionsHeading = $('<h3>').text("Instructions").attr('class', 'instructions')
+const movieHeader = $('<h3>');
+const moviePlotHeading = $('<h4>').text("Plot").attr('class', 'plot');
+const ingredientInfo = $('#ingredients');
+const ingredientsHeading = $('<h4>').text("Ingredients").attr('class', 'ingredients');
+const instructionInfo = $('#instructions');
+const instructionsHeading = $('<h4>').text("Instructions").attr('class', 'instructions');
 const recipes = $('.Recipes');
-const savedCocktailArray = []
+const savedCocktailArray = [];
 
 // variables for APIs
 const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
