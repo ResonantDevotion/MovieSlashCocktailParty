@@ -6,9 +6,7 @@ const matchBtn = $('#matchBtn');
 const saveBtn = $('#save');
 const movieHeader = $('<h3>');
 const moviePlotHeading = $('<h4>').text("Plot").attr('class', 'plot');
-const ingredientInfo = $('#ingredients');
 const ingredientsHeading = $('<h4>').text("Ingredients").attr('class', 'ingredients');
-const instructionInfo = $('#instructions');
 const instructionsHeading = $('<h4>').text("Instructions").attr('class', 'instructions');
 const recipes = $('.Recipes');
 const savedCocktailArray = [];
@@ -25,8 +23,6 @@ $('#matchBtn').on('click', function (event) {
     event.preventDefault();
     $('#movie').empty()
     $('#cocktail').empty()
-    $('#ingredients').empty()
-    $('#instructions').empty()
 
     // creating a variable which ajax pulls the film API and puts into the console
     //movie image is pulled by the API and dynamically appended to the #movie
