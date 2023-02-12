@@ -6,9 +6,9 @@ const matchBtn = $('#matchBtn');
 const saveBtn = $('#save');
 const movieHeader = $('<h3>')
 const ingredientInfo = $('#ingredients')
-const ingredientsHeading = $('<h3>').text("Ingredients")
+const ingredientsHeading = $('<h3>').text("Ingredients").attr('class', 'ingredients')
 const instructionInfo = $('#instructions')
-const instructionsHeading = $('<h3>').text("Instructions")
+const instructionsHeading = $('<h3>').text("Instructions").attr('class', 'instructions')
 const recipes = $('.Recipes');
 const savedCocktailArray = []
 
@@ -136,7 +136,7 @@ saveBtn.on('click', function (event) {
 
 savedCocktailArray.forEach(dynamicSavedCocktailButton);
 
-function dynamicSavedCocktailButton(i){
+function dynamicSavedCocktailButton(i) {
 
 
     let cocktailListItem = $("<button>").text(savedCocktail);
