@@ -24,68 +24,70 @@ console.log(savedCocktailArr);
 
 
 
-function dynamicSavedCocktailButton(i) {
+function dynamicSavedCocktailButton(item, x) {
+    let cocktailListItem = $("<a>").text(item).attr("id", "savedCocktail" + x).attr("class", "saved-cocktail-buttons");
+    recipeList.append(cocktailListItem)
 
-    for (let x = 0; x < savedCocktailArr.length; x++) {
-        let cocktailListItem = $("<a>").text(i).attr("id", "savedCocktail" + x).attr("class", "saved-cocktail-buttons");
-        recipeList.append(cocktailListItem)
+    cocktailListItem.on('click', function (event) {
+        event.preventDefault();
+        //replaces any spaces with % so able to search in the API
+        let savedCocktail = item.replace(/ +/g, '%');
+        // replaceAll(' ','');
+        console.log(savedCocktail);
+        const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
+        console.log(cocktailNameURL);
 
-        cocktailListItem.on('click', function (event) {
-            event.preventDefault();
-            //replaces any spaces with % so able to search in the API
-            let savedCocktail = i.replace(/ +/g, '%');
-            // replaceAll(' ','');
-            console.log(savedCocktail);
-            const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
-            console.log(cocktailNameURL);
+        $.ajax({
+            url: cocktailNameURL,
+            method: "GET"
 
-            $.ajax({
-                url: cocktailNameURL,
-                method: "GET"
+        }).then(function (response) {
+            $('#single-cocktail').empty()
+            $('#cocktail').empty()
 
-            }).then(function (response) {
-                $('#single-cocktail').empty()
-                $('#cocktail').empty()
+            let cocktailName = $('<h2>').text(response.drinks[0].strDrink).attr('class', 'cocktail-title');
+            let cocktailImg = $('<img>').attr('src', response.drinks[0].strDrinkThumb);
+            singleCocktail.append(cocktailName, cocktailImg, recipeIngredientsHeading);
 
-                let cocktailName = $('<h2>').text(response.drinks[0].strDrink).attr('class', 'cocktail-title');
-                let cocktailImg = $('<img>').attr('src', response.drinks[0].strDrinkThumb);
-                singleCocktail.append(cocktailName, cocktailImg, recipeIngredientsHeading);
+            let cocktailNameSrc = response.drinks[0].strDrink;
+            cocktailNameR.text(cocktailNameSrc);
 
-                let cocktailNameSrc = response.drinks[0].strDrink;
-                cocktailNameR.text(cocktailNameSrc);
+            let cocktailImgSrc = response.drinks[0].strDrinkThumb;
+            cocktailImgR.attr('src', cocktailImgSrc);
 
-                let cocktailImgSrc = response.drinks[0].strDrinkThumb;
-                cocktailImgR.attr('src', cocktailImgSrc);
+            for (let z = 1; z < 15; z++) {
+                let ingredient = response.drinks[0]["strIngredient" + z]
+                let measure = response.drinks[0]["strMeasure" + z]
+                // If the value is not null, add the them to an array of objects
+                if (ingredient !== null && measure !== null) {
+                    let ingredients = []
+                    ingredients.push({
+                        ingredient: ingredient,
+                        measure: measure
 
-                for (let z = 1; z < 15; z++) {
-                    let ingredient = response.drinks[0]["strIngredient" + z]
-                    let measure = response.drinks[0]["strMeasure" + z]
-                    // If the value is not null, add the them to an array of objects
-                    if (ingredient !== null && measure !== null) {
-                        let ingredients = []
-                        ingredients.push({
-                            ingredient: ingredient,
-                            measure: measure
-                        })
-                        // Loops the ingredients array
-                        for (let y = 0; y < ingredients.length; y++) {
-                            // Pulls data from the array, creates a Div and adds it to the HTML
-                            let ingredientx = ingredients[y].ingredient;
-                            let measurex = ingredients[y].measure;
+                    })
+                    // Loops the ingredients array
+                    for (let y = 0; y < ingredients.length; y++) {
+                        // Pulls data from the array, creates a Div and adds it to the HTML
+                        let ingredientx = ingredients[y].ingredient;
+                        let measurex = ingredients[y].measure;
 
-                            let cocktailIngR = $('<div>').text(measurex + " of " + ingredientx);
-                            singleCocktail.append(cocktailIngR);
-                        }
+                        let cocktailIngR = $('<div>').text(measurex + " of " + ingredientx);
+                        singleCocktail.append(cocktailIngR);
                     }
                 }
-                const cocktailInstrSrc = response.drinks[0].strInstructions;
-                let cocktailInsR = $('<p>').text(cocktailInstrSrc);
-                singleCocktail.append(recipeInstructionsHeading, cocktailInsR);
-            });
+            }
+            const cocktailInstrSrc = response.drinks[0].strInstructions;
+            let cocktailInsR = $('<p>').text(cocktailInstrSrc);
+            singleCocktail.append(recipeInstructionsHeading, cocktailInsR);
         });
-    }
+    });
 }
-savedCocktailArr.forEach(dynamicSavedCocktailButton);
+
+
+savedCocktailArr.forEach(function (item, index) {
+    dynamicSavedCocktailButton(item, index);
+});
 
 
 
