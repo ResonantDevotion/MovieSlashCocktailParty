@@ -49,7 +49,7 @@ function dynamicSavedCocktailButton(i) {
 
                 let cocktailName = $('<h2>').text(response.drinks[0].strDrink).attr('class', 'cocktail-title');
                 let cocktailImg = $('<img>').attr('src', response.drinks[0].strDrinkThumb);
-                singleCocktail.append(cocktailName, cocktailImg, recipeIngredientsHeading, recipeInstructionsHeading);
+                singleCocktail.append(cocktailName, cocktailImg, recipeIngredientsHeading);
 
                 let cocktailNameSrc = response.drinks[0].strDrink;
                 cocktailNameR.text(cocktailNameSrc);
@@ -70,14 +70,17 @@ function dynamicSavedCocktailButton(i) {
                         // Loops the ingredients array
                         for (let y = 0; y < ingredients.length; y++) {
                             // Pulls data from the array, creates a Div and adds it to the HTML
-                            var ingredientx = ingredients[y].ingredient
-                            var measurex = ingredients[y].measure
-                            cocktailIngR.text(measurex + " of " + ingredientx)
+                            let ingredientx = ingredients[y].ingredient;
+                            let measurex = ingredients[y].measure;
+
+                            let cocktailIngR = $('<div>').text(measurex + " of " + ingredientx);
+                            singleCocktail.append(cocktailIngR);
                         }
                     }
                 }
                 const cocktailInstrSrc = response.drinks[0].strInstructions;
-                cocktailInsR.text(cocktailInstrSrc)
+                let cocktailInsR = $('<p>').text(cocktailInstrSrc);
+                singleCocktail.append(recipeInstructionsHeading, cocktailInsR);
             });
         });
     }

@@ -111,7 +111,7 @@ h1 {
     margin-bottom: unset;
 }
 
-#movie, #cocktail {
+#movie, #cocktail, #single-cocktail {
     min-height: 600px;
     border: 5px dotted black;
     position: relative;
@@ -163,10 +163,6 @@ h2 {
     padding-top: calc(128px + 64px);
 }
 
-#single-cocktail {
-    padding: 0;
-}
-
 .saved-cocktail-buttons:first-child {
     border: 1px solid black;
 }
@@ -187,9 +183,17 @@ h2 {
     color: black;
 }
 
+#single-cocktail img {
+    margin-bottom: 25px;
+}
+
 #backBtn {
     margin-top: 25px;
     width: 100%;
+}
+
+.cocktail-title {
+    text-align: left;
 }
 
 /* FOOTER */
