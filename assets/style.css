@@ -1,8 +1,7 @@
 /* GLOBAL */
 :root {
     --pink: magenta;
-    --blue: blue;
-    --green: lime;
+    --grey: #f2f2f2;
 }
 
 body {
@@ -93,7 +92,7 @@ header .row {
     background-color: var(--pink);
 }
 
-/* JUMBOTRON */
+/* HOME PAGE */
 .jumbotron {
     padding-top: calc(128px + 64px);
 }
@@ -130,10 +129,8 @@ h1 {
         line-height: 59px;
     }
 }
-
-/* MAIN */
-main {
-    background-color: #f2f2f2;
+.pairing {
+    background-color: var(--grey);
 }
 
 .row {
@@ -214,6 +211,11 @@ h2 {
 
 #matchBtn, .save-recipe {
     text-align: center;
+}
+
+/* RECIPES PAGE */
+.saved-recipes {
+    padding-top: calc(128px + 64px);
 }
 
 /* FOOTER */
