@@ -47,7 +47,7 @@ function dynamicSavedCocktailButton(i) {
                 $('#single-cocktail').empty()
                 $('#cocktail').empty()
 
-                let cocktailName = $('<h2>').text(response.drinks[0].strDrink);
+                let cocktailName = $('<h2>').text(response.drinks[0].strDrink).attr('class', 'cocktail-title');
                 let cocktailImg = $('<img>').attr('src', response.drinks[0].strDrinkThumb);
                 singleCocktail.append(cocktailName, cocktailImg, recipeIngredientsHeading, recipeInstructionsHeading);
 
