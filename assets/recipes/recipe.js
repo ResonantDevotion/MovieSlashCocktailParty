@@ -89,13 +89,6 @@ savedCocktailArr.forEach(function (item, index) {
     dynamicSavedCocktailButton(item, index);
 });
 
-
-
-
-
-
-
-
 // Creates variable for the button ID
 const backBtn = $('#backBtn')
 // Initialises Jquery, adds a click function, takes the user to the home page and triggers the matchBtn event

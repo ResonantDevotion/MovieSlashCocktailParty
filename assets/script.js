@@ -63,6 +63,7 @@ $('#matchBtn').on('click', function (event) {
         const cocktailName = $('<h3>')
 
         let cocktailNameStorage = response.drinks[0].strDrink
+
         localStorage.setItem('name', JSON.stringify((cocktailNameStorage)));
 
         cocktailName.text(cocktailNameStorage)
