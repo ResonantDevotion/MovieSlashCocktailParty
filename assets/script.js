@@ -112,8 +112,11 @@ $('#matchBtn').on('click', function (event) {
     })
 })
 
+
+
 saveBtn.on('click', function (event) {
     event.preventDefault();
+
     //sets variable which pulls cocktail name from LS
     let desiredCocktail = JSON.parse(localStorage.getItem('name'));
     //sets the desired cocktail name into LS under a different key
@@ -121,30 +124,15 @@ saveBtn.on('click', function (event) {
     //sets the saved cocktail into a variable
     let savedCocktail = JSON.parse(localStorage.getItem('savedCocktail'));
 
+// ????
+    let savedCocktailArr = JSON.parse(localStorage.getItem('savedCocktailArray')) || [];
     //Pushes the saved cocktail into the savedCocktailArray
-    savedCocktailArray.push(savedCocktail)
-    console.log(savedCocktailArray)
+    // savedCocktailArr.push(savedCocktail)
+    if (savedCocktailArr.indexOf(savedCocktail) === -1) {
+        savedCocktailArr.push(savedCocktail)
+    };
 
-    localStorage.setItem('savedCocktailArray', JSON.stringify(savedCocktailArray));
+    localStorage.setItem('savedCocktailArray', JSON.stringify(savedCocktailArr));
 
-    let savedCocktailArr = JSON.parse(localStorage.getItem('savedCocktailArray'));
     console.log(savedCocktailArr);
-
 });
-
-savedCocktailArray.forEach(dynamicSavedCocktailButton);
-
-function dynamicSavedCocktailButton(i) {
-
-
-    let cocktailListItem = $("<button>").text(savedCocktail);
-
-    cocktailListItem.on('click', function (event) {
-        event.preventDefault();
-        let savedCocktail = JSON.parse(localStorage.getItem('savedCocktail'));
-        const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
-        console.log(cocktailNameURL);
-
-
-    });
-}
