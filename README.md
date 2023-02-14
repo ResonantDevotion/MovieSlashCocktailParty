@@ -27,7 +27,10 @@ The deployed application can be found at:
 
 https://resonantdevotion.github.io/MovieSlashCocktailParty/
 
+![Sample-application](assets/images/sample-application.jpg)
+
 ![Sample-code](assets/images/sample-code.jpg)
+
 
 
 ## Credits
