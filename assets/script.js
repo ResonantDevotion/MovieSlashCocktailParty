@@ -23,7 +23,7 @@ const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieApiKey + "&language=en-US&page=1"
 
 // clears the page upon refresh (will not clear after the save recipe function for improved user experience)
-window.onbeforeunload = function() {
+window.onbeforeunload = function () {
     $('#movie').empty()
     $('#cocktail').empty()
     localStorage.removeItem("name")
@@ -31,12 +31,12 @@ window.onbeforeunload = function() {
 
 // modal button functions
 
-modalContinueBtn.click(function() {
-    modal.hide()
+modalContinueBtn.click(function () {
+    modal.removeClass('show');
 })
 
 
-modalRecipeBtn.click(function() {
+modalRecipeBtn.click(function () {
     window.location.replace('./assets/recipes/recipe.html')
 })
 
@@ -139,7 +139,7 @@ $('#matchBtn').on('click', function (event) {
 
 saveBtn.on('click', function (event) {
     event.preventDefault();
-    modal.show()
+    modal.addClass('show');
 
     //sets variable which pulls cocktail name from LS
     let desiredCocktail = JSON.parse(localStorage.getItem('name'));
@@ -148,7 +148,7 @@ saveBtn.on('click', function (event) {
     //sets the saved cocktail into a variable
     let savedCocktail = JSON.parse(localStorage.getItem('savedCocktail'));
 
-// ????
+    // ????
     let savedCocktailArr = JSON.parse(localStorage.getItem('savedCocktailArray')) || [];
     //Pushes the saved cocktail into the savedCocktailArray
     // savedCocktailArr.push(savedCocktail)
