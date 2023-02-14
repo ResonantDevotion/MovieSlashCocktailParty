@@ -118,6 +118,15 @@ h1 {
     padding: 25px;
 }
 
+span {
+    font-size: 125px;
+    line-height: 125px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #movie h3, #movie img, #cocktail h3, #cocktail img {
     position: relative;
     z-index: 1;
