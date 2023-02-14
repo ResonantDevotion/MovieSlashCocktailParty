@@ -2,52 +2,42 @@
 Creating an app that allows a user to select cocktails to watch with specific movies.
 
 ## Description 
+This was a team project by "The Lost".
 
-This project was a team collaboration task to design and create a web app from scratch that solves a real-world problem such as 'How can I impress my date on a netflix and chill night?'.
-This projects involved adding two server APIs, local storage, and bootstrap, as well as using wireframing, html, css, and javascript.
-This project was also used to allow us to practice agile development methodologies, git branch workflow, collaboration and our presentation skills.
+We identified a desperate need in the market. People were systematically failing to choose the correct movie to be shown at their parties, and even more concerning, they didn’t know which cocktail would enhance the experience.
+
+Our goals were:
+    - To use both a cocktail and movie API to enhance party planning,
+    - The use client-side storage to allow users to save combinations   they like,
+    - To use bootstrap and modals to show a modern, well organised website,
+    - Most importantly, we wanted user input to dictate the response.
 
 
-The deployed application can be found here at:
+We used the following technologies while adopting an agile workflow:
 
+    - Github
+    - Visual Studio Code
+        - JavaScript
+        - HTML
+        - CSS
+        - Bootstrap
+
+## Usage
+The deployed application can be found at:
 
 https://resonantdevotion.github.io/MovieSlashCocktailParty/
-
-
-## Table of Contents (Optional)
-N/A
-
-## Installation
-N/A
-
-
-## Usage 
-Deployed application should look like the following images:
 
 ![Sample-code](assets/images/sample-code.jpg)
 
 
-
 ## Credits
-Benjamin Cottrell, Amelia Bramwell, Haris Haider, and Rebecca Wood.
+Amelia Bramwell, Benjamin Cottrell, Haris Haider, and Rebecca Wood.
 
 ## License
-MIT license.
-
----
-
-
-## Badges
-N/A
-
-## Features
-N/A
+MIT license - Please see the License in the Repo.
 
 ## Contributing
 For contributions please find us on the skills bootcamp slack channel!
-
-## Tests
-N/A
 
 ---
 
