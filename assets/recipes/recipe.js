@@ -15,12 +15,14 @@ const cocktailIngR = $('#ingredients-Results');
 // variable for cocktail instruction location
 const cocktailInsR = $('#instructions-Results');
 
+// variable for dynamically created saved cocktail buttons
+const cocktailButtons = $('.saved-cocktail-buttons');
+
 const recipeIngredientsHeading = $('<h4>').text("Ingredients").attr('class', 'ingredients');
 const recipeInstructionsHeading = $('<h4>').text("Instructions").attr('class', 'instructions');
 
 
 const savedCocktailArr = JSON.parse(localStorage.getItem('savedCocktailArray'));
-console.log(savedCocktailArr);
 
 
 
@@ -28,14 +30,18 @@ function dynamicSavedCocktailButton(item, x) {
     let cocktailListItem = $("<a>").text(item).attr("id", "savedCocktail" + x).attr("class", "saved-cocktail-buttons");
     recipeList.append(cocktailListItem)
 
+    //creates delete button within each saved cocktail list
+    let deleteCocktailBtn = $('<button>');
+    deleteCocktailBtn.attr('id', 'deleteBtn');
+    cocktailListItem.append(deleteCocktailBtn);
+
     cocktailListItem.on('click', function (event) {
         event.preventDefault();
         //replaces any spaces with % so able to search in the API
         let savedCocktail = item.replace(/ +/g, '%');
         // replaceAll(' ','');
-        console.log(savedCocktail);
+
         const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
-        console.log(cocktailNameURL);
 
         $.ajax({
             url: cocktailNameURL,
@@ -82,7 +88,34 @@ function dynamicSavedCocktailButton(item, x) {
             singleCocktail.append(recipeInstructionsHeading, cocktailInsR);
         });
     });
+            //dynamically create a button within the individual cocktail button which when pressed (Event listener), clears that particular cocktail item
+            cocktailListItem.on('click', '#deleteBtn', function (event) {
+                event.stopPropagation();
+
+                let clearCocktailBtn = $('#deleteBtn');
+                clearCocktailBtn = $(event.target);
+                clearCocktailBtn.parent(cocktailListItem).remove();
+    
+                let cocktailnamevalue = cocktailListItem.text();
+    
+                let newLsArray = savedCocktailArr.filter((item) => 
+                item !== cocktailnamevalue
+                )
+                console.log(newLsArray);
+
+                localStorage.setItem("savedCocktailArray", JSON.stringify(newLsArray))
+
+                        console.log("singleCocktail");
+
+                console.log(singleCocktail);
+
+                singleCocktail.empty();
+            });
 }
+
+
+
+
 
 
 savedCocktailArr.forEach(function (item, index) {
