@@ -9,6 +9,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Global button styling */
 button {
     font-size: 14px;
     color: var(--pink);
@@ -26,12 +27,14 @@ button:hover {
     color: white;
 }
 
+/* Global img behaviour*/
 img {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
+/* Global section padding*/
 section {
     padding: 32px;
 }
@@ -71,6 +74,7 @@ header .row {
     color: var(--pink);
 }
 
+/* Add the underline after the nav link */
 .nav-link:hover:after, .nav-link.active:after {
     content: '';
     position: absolute;
@@ -111,6 +115,7 @@ h1 {
     margin-bottom: unset;
 }
 
+/* Set a minimum height for each content box */
 #movie, #cocktail, #single-cocktail {
     min-height: 600px;
     border: 5px dotted black;
@@ -231,6 +236,7 @@ button:hover a {
     border: 1px solid black;
 }
 
+/* Specific style for saved cocktail buttons */
 .saved-cocktail-buttons {
     display: block;
     border: 1px solid black;
@@ -304,6 +310,7 @@ footer .col {
 }
 
 @media only screen and (min-width: 767px) {
+    
     .modal-content {
         width: 550px;
         padding: 50px;
