@@ -16,6 +16,14 @@ const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
 const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieApiKey + "&language=en-US&page=1"
 
+// Enables the page to start fresh upon refresh
+window.onbeforeunload = function() {
+    $('#movie').empty()
+    $('#cocktail').empty()
+    localStorage.removeItem("name")
+}
+
+
 
 
 // when match button is clicked, event listen and complete following functions
