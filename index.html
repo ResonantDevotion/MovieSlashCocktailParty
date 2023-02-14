@@ -19,6 +19,7 @@
 
 <body>
 
+    <!-- Top header - sticky with logo and navigation -->
     <header>
         <div class="container top-bar">
             <div class="logo">
@@ -31,20 +32,21 @@
         </div>
     </header>
 
+    <!-- Main content - including hero, pairing section (with both the movie and cocktails)-->
     <main>
+
+        <!-- Jumbotron / hero with introduction info -->
         <section class="jumbotron">
             <div class="container">
                 <div class="content">
                     <h1>Movie and Cocktail Evening!</h1>
                     <p id="top-header">Everyone wants a treat with a movie, why not try our randomised
-                        movie and cocktail
-                        pairing
-                        app!</p>
-                    <!-- <p> Click the button below to make the evening spectacular!</p> -->
-                    <!-- <button id="matchBtn">Create the Perfect Match</button> -->
+                        movie and cocktail pairing app!</p>
                 </div>
             </div>
         </section>
+
+        <!-- Pairing content will go here, including buttons and results (dynamically created in JS)-->
         <section class="pairing">
             <div class="container">
                 <div class="row">
@@ -62,7 +64,6 @@
                         <span>?</span>
                     </div>
                 </div>
-
                 <div class="row save-recipe">
                     <div class="col">
                         <button id="save">I LOVE THIS! Save this recipe!</button>
@@ -79,11 +80,12 @@
 
                     </div>
                 </div>
-
             </div>
         </section>
 
     </main>
+
+    <!-- Footer for owner credit and API credit -->
     <footer>
         <div class="container">
             <div class="row">
@@ -104,8 +106,9 @@
         </div>
     </footer>
 
-
+    <!-- Script for JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Link custom JavaScript -->
     <script src="./assets/script.js"></script>
     <script src="./assets/recipes/recipe.js"></script>
 </body>
