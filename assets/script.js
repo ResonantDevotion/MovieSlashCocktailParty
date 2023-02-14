@@ -11,19 +11,34 @@ const instructionsHeading = $('<h4>').text("Instructions").attr('class', 'instru
 const recipes = $('.Recipes');
 const savedCocktailArray = [];
 
+// variables for modal
+const modal = $('#modal')
+const modalContinueBtn = $('#continue-btn')
+const modalRecipeBtn = $('#recipe-btn')
+
+
 // variables for APIs
 const movieApiKey = "f4920d6233298948b21f1d6f36cc9694"
 const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieApiKey + "&language=en-US&page=1"
 
-// Enables the page to start fresh upon refresh
+// clears the page upon refresh (will not clear after the save recipe function for improved user experience)
 window.onbeforeunload = function() {
     $('#movie').empty()
     $('#cocktail').empty()
     localStorage.removeItem("name")
 }
 
+// modal button functions
 
+modalContinueBtn.click(function() {
+    modal.hide()
+})
+
+
+modalRecipeBtn.click(function() {
+    window.location.replace('./assets/recipes/recipe.html')
+})
 
 
 // when match button is clicked, event listen and complete following functions
@@ -124,6 +139,7 @@ $('#matchBtn').on('click', function (event) {
 
 saveBtn.on('click', function (event) {
     event.preventDefault();
+    modal.show()
 
     //sets variable which pulls cocktail name from LS
     let desiredCocktail = JSON.parse(localStorage.getItem('name'));
