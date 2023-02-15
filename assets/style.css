@@ -181,6 +181,10 @@ h2 {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal {
+    display: none;
+}
+
 .modal-content {
     display: flex;
     flex-direction: column;
