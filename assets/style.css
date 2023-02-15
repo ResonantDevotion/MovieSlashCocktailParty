@@ -173,7 +173,8 @@ h2 {
 }
 
 /* MODAL */
-.show {
+
+.modal, .show {
     width: 100%;
     height: 100%;
     display: block;
@@ -251,6 +252,34 @@ button:hover a {
 .saved-cocktail-buttons:hover {
     background-color: var(--grey);
     color: black;
+}
+
+.saved-cocktail-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#deleteBtn {
+    margin-bottom: 0px;
+    border: 0px;
+    position: relative;
+}
+
+#deleteBtn:after {
+    content: url('images/button.svg');
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) rotate(0deg);
+    width: 22px;
+    height: 22px;
+}
+
+#deleteBtn:hover {
+    background-color: transparent;
+    border: 0px;
+    opacity: 0.5;
 }
 
 #single-cocktail img {
