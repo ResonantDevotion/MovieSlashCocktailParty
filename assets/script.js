@@ -1,21 +1,34 @@
-// Variables for ids
+
+// Variable for targeting movie id using jquery 
 const movieInfo = $('#movie');
+// Variable for targeting cocktail id using jquery 
 const cocktailInfo = $('#cocktail');
+// Variable for targeting matchBtn id using jquery 
 const matchBtn = $('#matchBtn');
+// Variable for targeting save id using jquery 
 const saveBtn = $('#save');
+// Variable for dynamically creating an h3 using jquery 
 const movieHeader = $('<h3>');
+
 const moviePlotHeading = $('<h4>').text("Plot").attr('class', 'plot');
 const ingredientsHeading = $('<h4>').text("Ingredients").attr('class', 'ingredients');
 const instructionsHeading = $('<h4>').text("Instructions").attr('class', 'instructions');
 
-// Variables for modal
+// Variables for modal 
+// sets a variable for  the modal id
 const modal = $('#modal');
+
+// set a variable continue-btn for the modal
 const modalContinueBtn = $('#continue-btn');
+// set a variable recipe-btn for the modal
 const modalRecipeBtn = $('#recipe-btn');
 
 // Variables for APIs
+// creates a variable for api key
 const movieApiKey = "f4920d6233298948b21f1d6f36cc9694";
+// creates a variable for coctail api url
 const randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+// creates a variable for movie api url
 const movieQueryURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieApiKey + "&language=en-US&page=1";
 
 // Clears the page upon refresh (will not clear after the save recipe function for improved user experience), removes the name key from local storage
@@ -66,18 +79,19 @@ $('#matchBtn').on('click', function (event) {
         moviePlot.text(randomMovie.overview);
         $('#movie').append(moviePlot);
     });
-    // Function to get the cocktail API data
+    // Function to get the cocktail API data using jquery. 
     $.ajax({
         url: randomCocktail,
         method: "GET"
-        // Once the above function has run, continue
+
+        // Once the above function has run, continue.
     }).then(function (response) {
         // Creates a h3 title
         const cocktailHeader = $('<h3>');
-        // Variable to save the name of the specific cocktail in local storage
+        // Variable to save the name of the specific cocktail in local storage.
         let cocktailName = response.drinks[0].strDrink;
         localStorage.setItem('name', JSON.stringify((cocktailName)));
-        // Appends the name to the header in the HTML
+        // Appends the name to the header in the HTML.
         cocktailHeader.text(cocktailName);
         cocktailInfo.append(cocktailHeader);
         // Creates an image tag, pulls the image from the API and adds the image to the HTML
@@ -109,6 +123,7 @@ $('#matchBtn').on('click', function (event) {
                 };
             };
         };
+
         // Creates a div, adds text to the element and adds to the HTML. Adds the heading for the Instructions section 
         const cocktailInstructionsTag = $('<div>');
         const cocktailInstructions = response.drinks[0].strInstructions;
