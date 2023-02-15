@@ -1,4 +1,4 @@
-// Variables for ids
+
 // Variable for targeting movie id using jquery 
 const movieInfo = $('#movie');
 // Variable for targeting cocktail id using jquery 
@@ -7,7 +7,7 @@ const cocktailInfo = $('#cocktail');
 const matchBtn = $('#matchBtn');
 // Variable for targeting save id using jquery 
 const saveBtn = $('#save');
-
+// Variable for dynamically creating an h3 using jquery 
 const movieHeader = $('<h3>');
 
 const moviePlotHeading = $('<h4>').text("Plot").attr('class', 'plot');
@@ -78,12 +78,12 @@ $('#matchBtn').on('click', function (event) {
         const moviePlot = $('<div>');
         moviePlot.text(randomMovie.overview);
         $('#movie').append(moviePlot);
-
     });
     // Function to get the cocktail API data using jquery. 
     $.ajax({
         url: randomCocktail,
         method: "GET"
+
         // Once the above function has run, continue.
     }).then(function (response) {
         // Creates a h3 title
@@ -94,17 +94,13 @@ $('#matchBtn').on('click', function (event) {
         // Appends the name to the header in the HTML.
         cocktailHeader.text(cocktailName);
         cocktailInfo.append(cocktailHeader);
-
         // Creates an image tag, pulls the image from the API and adds the image to the HTML
         const cocktailImgTag = $('<img>');
         let cocktailImg = response.drinks[0].strDrinkThumb;
         cocktailImgTag.attr('src', cocktailImg);
         cocktailInfo.append(cocktailImgTag);
-
         // Adds the heading for the Ingredients section (Above the loop to avoid duplication)
         cocktailInfo.append(ingredientsHeading);
-
-
         // Loops API array keys (strIngredient and strMeasure) and pulls data from input 1-15
         for (let i = 1; i < 15; i++) {
             let ingredient = response.drinks[0]["strIngredient" + i];
@@ -144,7 +140,6 @@ saveBtn.on('click', function (event) {
     event.preventDefault();
     // Shows the modal
     modal.show();
-
     // Variable which pulls cocktail name from local storage
     let desiredCocktail = JSON.parse(localStorage.getItem('name'));
     // Sets the desired cocktail name into local storage under a different key
