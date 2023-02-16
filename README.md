@@ -1,5 +1,5 @@
 # MovieSlashCocktailParty
-Creating an app that allows a user to select cocktails to watch with specific movies.
+Creating an app that provides users with a randomised movie and cocktail combination.
 
 ## Description 
 This was a team project by "The Lost".
@@ -32,27 +32,25 @@ https://resonantdevotion.github.io/MovieSlashCocktailParty/
 
 Once the user enters the page they can see the full web application.
 
-At the top of the page the user can find the navigation bar that allows them to move between pages. Here the user can access the home and recipe pages by clicking the relevant buttons.
+The navigation bar allows users to move between the pages. The user can access the home and recipe pages by clicking the relevant buttons.
 
 ![Sample-application](assets/images/sample-application.jpg)
 
-The user can find a random combination of movies and cocktails by simply clicking the "CLICK ME!" button.
+The user can find a random combination of movies and cocktails by clicking the "CLICK ME!" button.
 
 ![home-page](assets/images/home-page.png)
 
-If the user likes the cocktail, they can simply save the cocktail and its recipe for their use later by clicking the "I LOVE THIS! SAVE THIS RECIPE!" button.
+If the user likes the cocktail, they can save its recipe by clicking the "I LOVE THIS! SAVE THIS RECIPE!" button.
 
 ![pop-up](assets/images/pop-up.PNG)
 
-Once the "I LOVE THIS! SAVE THIS RECIPE!" button is clicked the user receives a pop up (modal) that their recipe has been saved. This pop up also allows the user to continue finding new results in the home page or direct them to the recipe page where their cocktails are stored.
+Once "I LOVE THIS! SAVE THIS RECIPE!" is clicked, the user receives a pop up (modal) that their recipe has been saved. This pop up also allows the user to continue finding new results in the home page or direct them to the recipe page where their cocktails are stored.
 
-Moving to the Recipe page the user can access their saved recipes by clicking on the specific cocktail name.
+On the Recipe page, the user can access their saved recipes by clicking on the specific cocktail name.
 
 ![cocktail-Recipe](assets/images/cocktail-Recipe.png)
 
-Similarly users have the ability to clear a specific cocktail off the saved list.
-
-Lastly if the user feels they want to search for more recipes, they can click the "GET ME ANOTHER MATCH!" button.
+Users also have the ability to clear a specific cocktail off the saved list, and if they want to search for more recipes, they can click the "GET ME ANOTHER MATCH!" button.
 
 ## Credits
 Amelia Bramwell, Benjamin Cottrell, Haris Haider, and Rebecca Wood.
