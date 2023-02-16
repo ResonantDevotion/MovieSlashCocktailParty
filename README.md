@@ -55,7 +55,7 @@ Once the I LOVE THIS! SAVE THIS RECIPE!  button is clicked the user receives a p
 
 Moving to the Recipe page the user can access their saved recipes by clicking on the specific cocktail name
 
-![cocktail - Recipe](assets/images/cocktail - Recipe.PNG)
+![cocktail-Recipe](assets/images/cocktail-Recipe.PNG)
 
 Simlarly users have the ability  to clear a specific cocktail off the saved list.
 
