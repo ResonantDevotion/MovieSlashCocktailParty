@@ -44,7 +44,7 @@ At the top of the page the user can find the navigation bar that allows them to 
 Moving along let us discuss the usage of the Home page.
 Here the user can use the page to find match of cocktail and movie at random  by simply clicking the  CLICK ME! button.
 
-![home-page](assets/images/home-page.jpg)
+![home-page](assets/images/home-page.png)
 
 
 Depending on the user preference if the user likes a combo and the cocktail specifically , they can simply save the cocktail and its recipe for their use later on by clicking the  I LOVE THIS! SAVE THIS RECIPE! button.
