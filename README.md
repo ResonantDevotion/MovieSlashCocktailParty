@@ -23,8 +23,7 @@ We used the following technologies while adopting an agile workflow:
         - CSS
         - Bootstrap
         
-*** Disclaimer: some cocktails do not get displayed properly when saved. We have diagnosed that this is due to the API naming synatx which for a few cocktails is different than the others (vermouth cassis). Additionally, upon first use of the application, if you inspect and open up the console, there will be some errors, this is to be ignored and will fix itself once the application is first used.
-
+*** Disclaimer: some cocktails do not get displayed properly when saved. We have diagnosed that this is due to the API naming synatx which for a few cocktails is different than the others (vermouth cassis). 
 
 ## Usage
 The deployed application can be found at:
