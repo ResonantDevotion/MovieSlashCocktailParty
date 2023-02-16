@@ -25,7 +25,6 @@ function dynamicSavedCocktailButton(item) {
     // Creates an anchor tag, sets the cocktail as its name, gives it a class and appends it to the recipeList
     let cocktailListItem = $("<a>").text(item).attr("class", "saved-cocktail-buttons");
     recipeList.append(cocktailListItem);
-
     // Creates delete button within each saved cocktail list
     let deleteCocktailBtn = $('<button>');
     deleteCocktailBtn.attr('id', 'deleteBtn');
@@ -35,9 +34,6 @@ function dynamicSavedCocktailButton(item) {
         event.preventDefault();
         // Replaces any spaces with % so able to search in the API
         let savedCocktail = item.replace(/ +/g, '%');
-
-        // replaceAll(' ','');
-
         // Variable for the particular saved cocktail
         const cocktailNameURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail;
         // Function to get the API data
@@ -52,7 +48,6 @@ function dynamicSavedCocktailButton(item) {
             let cocktailName = $('<h2>').text(response.drinks[0].strDrink).attr('class', 'cocktail-title');
             let cocktailImg = $('<img>').attr('src', response.drinks[0].strDrinkThumb);
             singleCocktail.append(cocktailName, cocktailImg, recipeIngredientsHeading);
-               
             // For every item in the saved cocktail array, extract the incredients and measure data and append to the relevant element
             for (let i = 1; i < 15; i++) {
                 let ingredient = response.drinks[0]["strIngredient" + i];
@@ -62,15 +57,13 @@ function dynamicSavedCocktailButton(item) {
                     let ingredients = [];
                     ingredients.push({
                         ingredient: ingredient,
-                        measure: measure    
-
+                        measure: measure
                     });
                     // Loops the ingredients array
                     for (let j = 0; j < ingredients.length; j++) {
                         // Pulls data from the array, creates a Div and adds it to the HTML
                         let ingredientx = ingredients[j].ingredient;
                         let measurex = ingredients[j].measure;
-
                         let cocktailIngR = $('<div>').text(measurex + " of " + ingredientx);
                         singleCocktail.append(cocktailIngR);
                     };
@@ -82,27 +75,25 @@ function dynamicSavedCocktailButton(item) {
             singleCocktail.append(recipeInstructionsHeading, cocktailInsR);
         });
     });
-            // Dynamically create a button within the individual cocktail button which when pressed (Event listener), clears that particular cocktail item
-            cocktailListItem.on('click', '#deleteBtn', function (event) {
-                // Stops the main click function from firing when deleting a recipe from the list & local storage
-                event.stopPropagation();
-                // Refreshes page after each deletion to fix a bug where if you delete multiple items, they would re-add themselves
-                location.reload();
-                // Variable which removes a specific cocktail from the saved recipes list
-                let clearCocktailBtn = $('#deleteBtn');
-                clearCocktailBtn = $(event.target);
-                clearCocktailBtn.parent(cocktailListItem).remove();
-                // Variable for the specific cocktail name
-                let cocktailnamevalue = cocktailListItem.text();
-                // Removes the specific cocktail from the local storage array
-                let newLsArray = savedCocktailArr.filter((item) => 
-                item !== cocktailnamevalue
-                );
-                // Updates the local storage array without the excluded cocktail
-                localStorage.setItem("savedCocktailArray", JSON.stringify(newLsArray));
-               
-                // singleCocktail.empty();
-  });
+    // Dynamically create a button within the individual cocktail button which when pressed (Event listener), clears that particular cocktail item
+    cocktailListItem.on('click', '#deleteBtn', function (event) {
+        // Stops the main click function from firing when deleting a recipe from the list & local storage
+        event.stopPropagation();
+        // Refreshes page after each deletion to fix a bug where if you delete multiple items, they would re-add themselves
+        location.reload();
+        // Variable which removes a specific cocktail from the saved recipes list
+        let clearCocktailBtn = $('#deleteBtn');
+        clearCocktailBtn = $(event.target);
+        clearCocktailBtn.parent(cocktailListItem).remove();
+        // Variable for the specific cocktail name
+        let cocktailnamevalue = cocktailListItem.text();
+        // Removes the specific cocktail from the local storage array
+        let newLsArray = savedCocktailArr.filter((item) =>
+            item !== cocktailnamevalue
+        );
+        // Updates the local storage array without the excluded cocktail
+        localStorage.setItem("savedCocktailArray", JSON.stringify(newLsArray));
+    });
 };
 
 // For every item in the savedCocktailArr, run the dynamicSavedCocktailButton
@@ -120,4 +111,3 @@ $(document).ready(function () {
     // Appends it to the HTML
     $('#recipe-list').append(backBtn);
 });
-
