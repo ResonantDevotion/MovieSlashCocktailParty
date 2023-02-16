@@ -7,6 +7,7 @@ This was a team project by "The Lost".
 We identified a desperate need in the market. People were systematically failing to choose the correct movie to be shown at their parties, and even more concerning, they didn’t know which cocktail would enhance the experience.
 
 Our goals were:
+
     - To use both a cocktail and movie API to enhance party planning,
     - The use client-side storage to allow users to save combinations   they like,
     - To use bootstrap and modals to show a modern, well organised website,
@@ -31,10 +32,6 @@ The deployed application can be found at:
 https://resonantdevotion.github.io/MovieSlashCocktailParty/ 
 
 Once the user enters the page they can see the full web application.
-
-
-![Sample-code](assets/images/sample-code.jpg)
-
 
 At the top of the page the user can find the navigation bar that allows them to move between pages.Here the user can access the home page by clicking at the Home item or the Recipes page by clicking on the Recipe item.
 
