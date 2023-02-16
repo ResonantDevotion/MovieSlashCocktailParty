@@ -32,7 +32,6 @@ https://resonantdevotion.github.io/MovieSlashCocktailParty/
 
 Once the user enters the page they can see the full web application.
 
-![Sample-application](assets/images/sample-application.jpg)
 
 ![Sample-code](assets/images/sample-code.jpg)
 
