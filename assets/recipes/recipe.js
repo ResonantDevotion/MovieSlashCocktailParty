@@ -48,7 +48,7 @@ function dynamicSavedCocktailButton(item) {
         }).then(function (response) {
             $('#single-cocktail').empty();
             $('#cocktail').empty();
-            // Variables which pulls the cocktail information from the API and adds it to the respective dynamically created elements
+            // Variables which pull the cocktail information from the API and adds it to the respective dynamically created elements
             let cocktailName = $('<h2>').text(response.drinks[0].strDrink).attr('class', 'cocktail-title');
             let cocktailImg = $('<img>').attr('src', response.drinks[0].strDrinkThumb);
             singleCocktail.append(cocktailName, cocktailImg, recipeIngredientsHeading);
@@ -112,12 +112,11 @@ savedCocktailArr.forEach(function (item, index) {
 
 // Creates variable for the button ID
 const backBtn = $('#backBtn');
-// Initialises Jquery, adds a click function, takes the user to the home page and triggers the matchBtn event
+// Initialises Jquery, adds a click function, takes the user to the home page
 $(document).ready(function () {
     backBtn.on('click', function () {
         window.location.replace('../../index.html');
     });
-    $('#matchBtn').click();
     // Appends it to the HTML
     $('#recipe-list').append(backBtn);
 });
