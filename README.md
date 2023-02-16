@@ -44,7 +44,7 @@ At the top of the page the user can find the navigation bar that allows them to 
 Moving along let us discuss the usage of the Home page.
 Here the user can use the page to find match of cocktail and movie at random  by simply clicking the  CLICK ME! button.
 
-![home-page](assets/images/home-page.jpg)
+![home-page](assets/images/home-page.png)
 
 
 Depending on the user preference if the user likes a combo and the cocktail specifically , they can simply save the cocktail and its recipe for their use later on by clicking the  I LOVE THIS! SAVE THIS RECIPE! button.
@@ -55,7 +55,7 @@ Once the I LOVE THIS! SAVE THIS RECIPE!  button is clicked the user receives a p
 
 Moving to the Recipe page the user can access their saved recipes by clicking on the specific cocktail name
 
-![cocktail-Recipe](assets/images/cocktail-Recipe.PNG)
+![cocktail-Recipe](assets/images/cocktail-Recipe.png)
 
 Simlarly users have the ability  to clear a specific cocktail off the saved list.
 
